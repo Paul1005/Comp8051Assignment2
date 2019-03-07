@@ -13,30 +13,28 @@
 #include <iostream>
 #include "Cell.hpp"
 
-Vertex planeVertices[]=
-{
-    Vertex(1,0,-1),
-    Vertex(1,0,1),
-    Vertex(-1,0,1),
-    Vertex(-1,0,-1)
-};
-
-GLuint planeIndices[]=
-{
-    0, 1, 2,
-    2, 3, 0
-};
-
 void Cell::CreateCell(){
     CreatePlane();
     CreateWalls();
 }
 
 Vertex* getPlaneVertices(){
+    static Vertex planeVertices[]=
+    {
+        Vertex(1,0,-1),
+        Vertex(1,0,1),
+        Vertex(-1,0,1),
+        Vertex(-1,0,-1)
+    };
     return planeVertices;
 };
 
 GLuint* getPlaneIndices(){
+    static GLuint planeIndices[]=
+    {
+        0, 1, 2,
+        2, 3, 0
+    };
     return planeIndices;
 };
 
