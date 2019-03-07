@@ -12,4 +12,11 @@
 #include "Cell.hpp"
 #include <stdio.h>
 
+class Renderer
+{
+public:
+    void update();
+    void draw();
+};
+
 #endif /* Renderer_hpp */

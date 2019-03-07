@@ -12,11 +12,11 @@
 #include <iostream>
 #include "Renderer.hpp"
 
-void update(){
+void Renderer::update(){
     
 }
 
-void draw(){
+void Renderer::draw(){
     Cell cell;
     unsigned int VBO, VAO, EBO;
     
