@@ -16,16 +16,17 @@
 
 class Cell
 {
-    
 public:
-    int CreateCell();
+    void CreateCell();
+    Vertex* getPlaneVertices();
+    GLuint* getPlaneIndices();
 private:
-    int CreatePlane();
-    int CreateWalls();
-    int CreateNorthWall();
-    int CreateSouthWall();
-    int CreateEastWall();
-    int CreateWestWall();
+    void CreatePlane();
+    void CreateWalls();
+    void CreateNorthWall();
+    void CreateSouthWall();
+    void CreateEastWall();
+    void CreateWestWall();
 };
 
 #endif /* Cell_hpp */

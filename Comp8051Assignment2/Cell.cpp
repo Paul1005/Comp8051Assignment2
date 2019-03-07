@@ -13,46 +13,54 @@
 #include <iostream>
 #include "Cell.hpp"
 
-Vertex planeVertices[];
+Vertex planeVertices[]=
+{
+    Vertex(1,0,-1),
+    Vertex(1,0,1),
+    Vertex(-1,0,1),
+    Vertex(-1,0,-1)
+};
 
-int Cell::CreateCell(){
+GLuint planeIndices[]=
+{
+    0, 1, 2,
+    2, 3, 0
+};
+
+void Cell::CreateCell(){
     CreatePlane();
     CreateWalls();
-    return 1;
 }
 
-int Cell::CreatePlane()
+Vertex* getPlaneVertices(){
+    return planeVertices;
+};
+
+GLuint* getPlaneIndices(){
+    return planeIndices;
+};
+
+void Cell::CreatePlane()
 {
-    planeVertices =
-    {
-        Vertex(1,0,-1),
-        Vertex(1,0,1),
-        Vertex(-1,0,1),
-        Vertex(-1,0,-1)
-    };
-    
-    GLuint indices[]= {
-        0, 1, 2,
-        2, 3, 0
-    }
+
 }
 
-int Cell::CreateWalls(){
+void Cell::CreateWalls(){
     
 }
 
-int Cell::CreateEastWall(){
+void Cell::CreateEastWall(){
     
 }
 
-int Cell::CreateWestWall(){
+void Cell::CreateWestWall(){
     
 }
 
-int Cell::CreateNorthWall(){
+void Cell::CreateNorthWall(){
     
 }
 
-int Cell::CreateSouthWall(){
+void Cell::CreateSouthWall(){
     
 }

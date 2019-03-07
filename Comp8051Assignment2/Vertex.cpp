@@ -8,7 +8,7 @@
 
 #include "Vertex.hpp"
 
-Vertex::Vertex (int a, int b, int c) {
+Vertex::Vertex (float a, float b, float c) {
     x = a;
     y = b;
     z = c;
