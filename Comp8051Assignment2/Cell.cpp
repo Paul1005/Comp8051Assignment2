@@ -18,7 +18,7 @@ void Cell::CreateCell(){
     CreateWalls();
 }
 
-Vertex* getPlaneVertices(){
+Vertex* Cell::getPlaneVertices(){
     static Vertex planeVertices[]=
     {
         Vertex(1,0,-1),
@@ -29,7 +29,7 @@ Vertex* getPlaneVertices(){
     return planeVertices;
 };
 
-GLuint* getPlaneIndices(){
+GLuint* Cell::getPlaneIndices(){
     static GLuint planeIndices[]=
     {
         0, 1, 2,
