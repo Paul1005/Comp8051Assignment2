@@ -36,7 +36,8 @@ GLint uniforms[NUM_UNIFORMS];
 
 - (void)setup:(GLKView *)view
 {
-    view.context = [[EAGLContext alloc] initWithAPI:kEAGLRenderingAPIOpenGLES2];
+    NSLog(@"setup");
+    view.context = [[EAGLContext alloc] initWithAPI:kEAGLRenderingAPIOpenGLES3];
     
     view.drawableDepthFormat = GLKViewDrawableDepthFormat24;
     
