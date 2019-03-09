@@ -44,6 +44,7 @@ GLint uniforms[NUM_UNIFORMS];
     theView = view;
     if (![self setupShaders])
         return;
+    renderer.setup();
 }
 
 - (void)update{
