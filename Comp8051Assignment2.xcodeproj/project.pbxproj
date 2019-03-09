@@ -11,6 +11,9 @@
 		DA386C8D2230B4B6002EB622 /* Cell.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DA386C8B2230B4B6002EB622 /* Cell.cpp */; };
 		DA386C902230BA9E002EB622 /* Vertex.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DA386C8E2230BA9E002EB622 /* Vertex.cpp */; };
 		DA386C97223360D6002EB622 /* BridgeFile.mm in Sources */ = {isa = PBXBuildFile; fileRef = DA386C96223360D6002EB622 /* BridgeFile.mm */; };
+		DA386C9E22344E4C002EB622 /* ShaderLoader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DA386C9C22344E4C002EB622 /* ShaderLoader.cpp */; };
+		DA386CA222344F34002EB622 /* Shader.fsh in Resources */ = {isa = PBXBuildFile; fileRef = DA386CA022344F34002EB622 /* Shader.fsh */; };
+		DA386CA322344F34002EB622 /* Shader.vsh in Resources */ = {isa = PBXBuildFile; fileRef = DA386CA122344F34002EB622 /* Shader.vsh */; };
 		DA9956C722138063002315D0 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = DA9956C622138063002315D0 /* AppDelegate.m */; };
 		DA9956CA22138063002315D0 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DA9956C922138063002315D0 /* ViewController.m */; };
 		DA9956CD22138063002315D0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DA9956CB22138063002315D0 /* Main.storyboard */; };
@@ -49,6 +52,10 @@
 		DA386C8F2230BA9E002EB622 /* Vertex.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Vertex.hpp; sourceTree = "<group>"; };
 		DA386C96223360D6002EB622 /* BridgeFile.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = BridgeFile.mm; sourceTree = "<group>"; };
 		DA386C98223360E6002EB622 /* BridgeFile.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BridgeFile.h; sourceTree = "<group>"; };
+		DA386C9C22344E4C002EB622 /* ShaderLoader.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ShaderLoader.cpp; sourceTree = "<group>"; };
+		DA386C9D22344E4C002EB622 /* ShaderLoader.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = ShaderLoader.hpp; sourceTree = "<group>"; };
+		DA386CA022344F34002EB622 /* Shader.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = Shader.fsh; sourceTree = "<group>"; };
+		DA386CA122344F34002EB622 /* Shader.vsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = Shader.vsh; sourceTree = "<group>"; };
 		DA9956C222138063002315D0 /* Comp8051Assignment2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Comp8051Assignment2.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DA9956C522138063002315D0 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		DA9956C622138063002315D0 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -96,6 +103,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		DA386C9F22344E69002EB622 /* Shaders */ = {
+			isa = PBXGroup;
+			children = (
+				DA386CA022344F34002EB622 /* Shader.fsh */,
+				DA386CA122344F34002EB622 /* Shader.vsh */,
+				DA386C9D22344E4C002EB622 /* ShaderLoader.hpp */,
+				DA386C9C22344E4C002EB622 /* ShaderLoader.cpp */,
+			);
+			path = Shaders;
+			sourceTree = "<group>";
+		};
 		DA9956B922138062002315D0 = {
 			isa = PBXGroup;
 			children = (
@@ -123,6 +141,7 @@
 		DA9956C422138063002315D0 /* Comp8051Assignment2 */ = {
 			isa = PBXGroup;
 			children = (
+				DA386C9F22344E69002EB622 /* Shaders */,
 				DA9956C522138063002315D0 /* AppDelegate.h */,
 				DA9956C622138063002315D0 /* AppDelegate.m */,
 				DA9956C822138063002315D0 /* ViewController.h */,
@@ -265,9 +284,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DA386CA222344F34002EB622 /* Shader.fsh in Resources */,
 				DA9956D222138065002315D0 /* LaunchScreen.storyboard in Resources */,
 				DA9956CF22138065002315D0 /* Assets.xcassets in Resources */,
 				DA9956CD22138063002315D0 /* Main.storyboard in Resources */,
+				DA386CA322344F34002EB622 /* Shader.vsh in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -295,6 +316,7 @@
 				DA386C97223360D6002EB622 /* BridgeFile.mm in Sources */,
 				DA386C8A2230B3C9002EB622 /* Renderer.cpp in Sources */,
 				DA386C902230BA9E002EB622 /* Vertex.cpp in Sources */,
+				DA386C9E22344E4C002EB622 /* ShaderLoader.cpp in Sources */,
 				DA9956FB2213809C002315D0 /* DisjointSet.cpp in Sources */,
 				DA9956CA22138063002315D0 /* ViewController.m in Sources */,
 				DA386C8D2230B4B6002EB622 /* Cell.cpp in Sources */,
