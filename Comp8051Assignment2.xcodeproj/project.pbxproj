@@ -10,6 +10,7 @@
 		DA386C8A2230B3C9002EB622 /* Renderer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DA386C882230B3C9002EB622 /* Renderer.cpp */; };
 		DA386C8D2230B4B6002EB622 /* Cell.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DA386C8B2230B4B6002EB622 /* Cell.cpp */; };
 		DA386C902230BA9E002EB622 /* Vertex.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DA386C8E2230BA9E002EB622 /* Vertex.cpp */; };
+		DA386C97223360D6002EB622 /* BridgeFile.mm in Sources */ = {isa = PBXBuildFile; fileRef = DA386C96223360D6002EB622 /* BridgeFile.mm */; };
 		DA9956C722138063002315D0 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = DA9956C622138063002315D0 /* AppDelegate.m */; };
 		DA9956CA22138063002315D0 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DA9956C922138063002315D0 /* ViewController.m */; };
 		DA9956CD22138063002315D0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DA9956CB22138063002315D0 /* Main.storyboard */; };
@@ -46,6 +47,8 @@
 		DA386C8C2230B4B6002EB622 /* Cell.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Cell.hpp; sourceTree = "<group>"; };
 		DA386C8E2230BA9E002EB622 /* Vertex.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Vertex.cpp; sourceTree = "<group>"; };
 		DA386C8F2230BA9E002EB622 /* Vertex.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Vertex.hpp; sourceTree = "<group>"; };
+		DA386C96223360D6002EB622 /* BridgeFile.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = BridgeFile.mm; sourceTree = "<group>"; };
+		DA386C98223360E6002EB622 /* BridgeFile.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BridgeFile.h; sourceTree = "<group>"; };
 		DA9956C222138063002315D0 /* Comp8051Assignment2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Comp8051Assignment2.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DA9956C522138063002315D0 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		DA9956C622138063002315D0 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -135,6 +138,8 @@
 				DA386C8C2230B4B6002EB622 /* Cell.hpp */,
 				DA386C8E2230BA9E002EB622 /* Vertex.cpp */,
 				DA386C8F2230BA9E002EB622 /* Vertex.hpp */,
+				DA386C96223360D6002EB622 /* BridgeFile.mm */,
+				DA386C98223360E6002EB622 /* BridgeFile.h */,
 			);
 			path = Comp8051Assignment2;
 			sourceTree = "<group>";
@@ -287,6 +292,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DA386C97223360D6002EB622 /* BridgeFile.mm in Sources */,
 				DA386C8A2230B3C9002EB622 /* Renderer.cpp in Sources */,
 				DA386C902230BA9E002EB622 /* Vertex.cpp in Sources */,
 				DA9956FB2213809C002315D0 /* DisjointSet.cpp in Sources */,

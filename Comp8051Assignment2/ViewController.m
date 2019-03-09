@@ -8,7 +8,9 @@
 
 #import "ViewController.h"
 
-@interface ViewController ()
+@interface ViewController (){
+    BridgeFile *bridgeFile;
+}
 
 @end
 
@@ -23,10 +25,15 @@
     view.drawableDepthFormat = GLKViewDrawableDepthFormat24;
 
     [EAGLContext setCurrentContext:view.context];
-    
-    glClearColor(0, 0, 0, 0);
-    glClear(GL_COLOR_BUFFER_BIT);
 }
 
+- (void)update
+{
+    [bridgeFile update]; 
+}
 
+- (void)glkView:(GLKView *)view drawInRect:(CGRect)rect
+{
+    [bridgeFile draw:rect]; // ###
+}
 @end

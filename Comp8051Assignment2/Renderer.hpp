@@ -11,10 +11,14 @@
 
 #include "Cell.hpp"
 #include <stdio.h>
+#include <OpenGLES/ES2/gl.h>
 
 class Renderer
 {
+    unsigned int vbo, vao, ebo;
+    Cell cell;
 public:
+    void setup();
     void update();
     void draw();
 };
