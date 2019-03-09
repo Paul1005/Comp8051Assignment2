@@ -12,6 +12,9 @@
 #include <iostream>
 
 #include "Renderer.hpp"
+#include "Shaders/ShaderLoader.hpp"
+
+ShaderLoader shaderLoader;
 
 void Renderer::setup(){
     glGenVertexArrays(1, &vao);
@@ -44,8 +47,8 @@ void Renderer::update(){
 
 void Renderer::draw(){
     glClearColor(0, 0, 0, 0);
-    glClear(GL_COLOR_BUFFER_BIT);
-    
+    glClear ( GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT );
+
     glBindVertexArray(vao);
     
     glDrawElements(GL_TRIANGLES,     // 1
@@ -56,4 +59,24 @@ void Renderer::draw(){
     glBindVertexArray(0);
 }
 
+Cell Renderer::getCell(){
+    return cell;
+}
+
+
+char *Renderer::LoadShaderFile(const char *shaderFileName)
+{
+    return shaderLoader.LoadShaderFile(shaderFileName);
+}
+
+GLuint Renderer::LoadShader(GLenum type, const char *shaderSrc)
+{
+    return shaderLoader.LoadShader(type, shaderSrc);
+}
+
+GLuint Renderer::LoadProgram(const char *vertShaderSrc, const char *fragShaderSrc)
+{
+    return shaderLoader.LoadProgram(vertShaderSrc, fragShaderSrc);
+    
+}
 

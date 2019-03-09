@@ -20,6 +20,8 @@ public:
     void CreateCell();
     Vertex* getPlaneVertices();
     GLuint* getPlaneIndices();
+    float translationX = 0;
+    float translationZ = -5;
 private:
     void CreatePlane();
     void CreateWalls();

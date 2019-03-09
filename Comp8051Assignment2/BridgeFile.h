@@ -12,6 +12,7 @@
 
 @interface BridgeFile : NSObject
 
+- (void)setup:(GLKView *)view;
 - (void)update;
 - (void)draw:(CGRect)drawRect;
 
