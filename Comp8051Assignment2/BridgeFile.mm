@@ -61,6 +61,8 @@ GLint uniforms[NUM_UNIFORMS];
 }
 
 - (void)draw:(CGRect)drawRect{
+        //NSLog(@"draw");
+    glUseProgram ( programObject );
     glUniformMatrix4fv(uniforms[UNIFORM_MODELVIEWPROJECTION_MATRIX], 1, FALSE, (const float *)modelViewMatrix.m);
     glUniformMatrix3fv(uniforms[UNIFORM_NORMAL_MATRIX], 1, 0, normalMatrix.m);
     glUniform1i(uniforms[UNIFORM_PASSTHROUGH], false);
