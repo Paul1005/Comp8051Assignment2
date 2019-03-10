@@ -44,7 +44,7 @@
 }
 
 - (void)glkView:(GLKView *)view drawInRect:(CGRect) rect{
-    glClearColor(135/255, 206/255, 235.0/255.0, 1.0);
+    glClearColor(135/255, 206/255, 235.0/255.0, 1.0); // sky blue
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     glEnable(GL_DEPTH_TEST);// takes care of objects drawn on top of other objects
     glEnable(GL_CULL_FACE); //takes care of the own object
@@ -58,6 +58,7 @@
 -(void)update {
     //[_square updateWithDelta:self.timeSinceLastUpdate];
     //[_cube updateWithDelta:self.timeSinceLastUpdate];
+    [_plane updateWithDelta:self.timeSinceLastUpdate];
 }
 
 @end
