@@ -13,6 +13,7 @@
 		DA386D0F2235012D002EB622 /* BaseEffect.m in Sources */ = {isa = PBXBuildFile; fileRef = DA386D0B2235012C002EB622 /* BaseEffect.m */; };
 		DA386D102235012D002EB622 /* SimpleVertex.glsl in Resources */ = {isa = PBXBuildFile; fileRef = DA386D0C2235012C002EB622 /* SimpleVertex.glsl */; };
 		DA386D112235012D002EB622 /* SimpleFragment.glsl in Resources */ = {isa = PBXBuildFile; fileRef = DA386D0D2235012C002EB622 /* SimpleFragment.glsl */; };
+		DA386D14223502A9002EB622 /* Plane.m in Sources */ = {isa = PBXBuildFile; fileRef = DA386D13223502A9002EB622 /* Plane.m */; };
 		DA9956C722138063002315D0 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = DA9956C622138063002315D0 /* AppDelegate.m */; };
 		DA9956CA22138063002315D0 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DA9956C922138063002315D0 /* ViewController.m */; };
 		DA9956CD22138063002315D0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DA9956CB22138063002315D0 /* Main.storyboard */; };
@@ -54,6 +55,8 @@
 		DA386D0C2235012C002EB622 /* SimpleVertex.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = SimpleVertex.glsl; sourceTree = "<group>"; };
 		DA386D0D2235012C002EB622 /* SimpleFragment.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = SimpleFragment.glsl; sourceTree = "<group>"; };
 		DA386D0E2235012D002EB622 /* Vertex.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Vertex.h; sourceTree = "<group>"; };
+		DA386D12223502A9002EB622 /* Plane.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Plane.h; sourceTree = "<group>"; };
+		DA386D13223502A9002EB622 /* Plane.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Plane.m; sourceTree = "<group>"; };
 		DA9956C222138063002315D0 /* Comp8051Assignment2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Comp8051Assignment2.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DA9956C522138063002315D0 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		DA9956C622138063002315D0 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -156,6 +159,8 @@
 				DA9956D022138065002315D0 /* LaunchScreen.storyboard */,
 				DA9956D322138065002315D0 /* Info.plist */,
 				DA9956D422138065002315D0 /* main.m */,
+				DA386D12223502A9002EB622 /* Plane.h */,
+				DA386D13223502A9002EB622 /* Plane.m */,
 			);
 			path = Comp8051Assignment2;
 			sourceTree = "<group>";
@@ -312,6 +317,7 @@
 			files = (
 				DA9956FB2213809C002315D0 /* DisjointSet.cpp in Sources */,
 				DA386D0F2235012D002EB622 /* BaseEffect.m in Sources */,
+				DA386D14223502A9002EB622 /* Plane.m in Sources */,
 				DA9956CA22138063002315D0 /* ViewController.m in Sources */,
 				DA9956D522138065002315D0 /* main.m in Sources */,
 				DA386D06223500F6002EB622 /* Model.m in Sources */,
