@@ -7,13 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		DA386C8A2230B3C9002EB622 /* Renderer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DA386C882230B3C9002EB622 /* Renderer.cpp */; };
-		DA386C8D2230B4B6002EB622 /* Cell.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DA386C8B2230B4B6002EB622 /* Cell.cpp */; };
-		DA386C902230BA9E002EB622 /* Vertex.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DA386C8E2230BA9E002EB622 /* Vertex.cpp */; };
-		DA386C97223360D6002EB622 /* BridgeFile.mm in Sources */ = {isa = PBXBuildFile; fileRef = DA386C96223360D6002EB622 /* BridgeFile.mm */; };
-		DA386C9E22344E4C002EB622 /* ShaderLoader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DA386C9C22344E4C002EB622 /* ShaderLoader.cpp */; };
-		DA386CA222344F34002EB622 /* Shader.fsh in Resources */ = {isa = PBXBuildFile; fileRef = DA386CA022344F34002EB622 /* Shader.fsh */; };
-		DA386CA322344F34002EB622 /* Shader.vsh in Resources */ = {isa = PBXBuildFile; fileRef = DA386CA122344F34002EB622 /* Shader.vsh */; };
+		DA386D04223500F6002EB622 /* Cube.m in Sources */ = {isa = PBXBuildFile; fileRef = DA386CFE223500F6002EB622 /* Cube.m */; };
+		DA386D05223500F6002EB622 /* Square.m in Sources */ = {isa = PBXBuildFile; fileRef = DA386D00223500F6002EB622 /* Square.m */; };
+		DA386D06223500F6002EB622 /* Model.m in Sources */ = {isa = PBXBuildFile; fileRef = DA386D01223500F6002EB622 /* Model.m */; };
+		DA386D0F2235012D002EB622 /* BaseEffect.m in Sources */ = {isa = PBXBuildFile; fileRef = DA386D0B2235012C002EB622 /* BaseEffect.m */; };
+		DA386D102235012D002EB622 /* SimpleVertex.glsl in Resources */ = {isa = PBXBuildFile; fileRef = DA386D0C2235012C002EB622 /* SimpleVertex.glsl */; };
+		DA386D112235012D002EB622 /* SimpleFragment.glsl in Resources */ = {isa = PBXBuildFile; fileRef = DA386D0D2235012C002EB622 /* SimpleFragment.glsl */; };
+		DA386D14223502A9002EB622 /* Plane.m in Sources */ = {isa = PBXBuildFile; fileRef = DA386D13223502A9002EB622 /* Plane.m */; };
 		DA9956C722138063002315D0 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = DA9956C622138063002315D0 /* AppDelegate.m */; };
 		DA9956CA22138063002315D0 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DA9956C922138063002315D0 /* ViewController.m */; };
 		DA9956CD22138063002315D0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DA9956CB22138063002315D0 /* Main.storyboard */; };
@@ -44,18 +44,19 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		DA386C882230B3C9002EB622 /* Renderer.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Renderer.cpp; sourceTree = "<group>"; };
-		DA386C892230B3C9002EB622 /* Renderer.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Renderer.hpp; sourceTree = "<group>"; };
-		DA386C8B2230B4B6002EB622 /* Cell.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Cell.cpp; sourceTree = "<group>"; };
-		DA386C8C2230B4B6002EB622 /* Cell.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Cell.hpp; sourceTree = "<group>"; };
-		DA386C8E2230BA9E002EB622 /* Vertex.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Vertex.cpp; sourceTree = "<group>"; };
-		DA386C8F2230BA9E002EB622 /* Vertex.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Vertex.hpp; sourceTree = "<group>"; };
-		DA386C96223360D6002EB622 /* BridgeFile.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = BridgeFile.mm; sourceTree = "<group>"; };
-		DA386C98223360E6002EB622 /* BridgeFile.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BridgeFile.h; sourceTree = "<group>"; };
-		DA386C9C22344E4C002EB622 /* ShaderLoader.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ShaderLoader.cpp; sourceTree = "<group>"; };
-		DA386C9D22344E4C002EB622 /* ShaderLoader.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = ShaderLoader.hpp; sourceTree = "<group>"; };
-		DA386CA022344F34002EB622 /* Shader.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = Shader.fsh; sourceTree = "<group>"; };
-		DA386CA122344F34002EB622 /* Shader.vsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = Shader.vsh; sourceTree = "<group>"; };
+		DA386CFE223500F6002EB622 /* Cube.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Cube.m; sourceTree = "<group>"; };
+		DA386CFF223500F6002EB622 /* Cube.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Cube.h; sourceTree = "<group>"; };
+		DA386D00223500F6002EB622 /* Square.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Square.m; sourceTree = "<group>"; };
+		DA386D01223500F6002EB622 /* Model.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Model.m; sourceTree = "<group>"; };
+		DA386D02223500F6002EB622 /* Square.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Square.h; sourceTree = "<group>"; };
+		DA386D03223500F6002EB622 /* Model.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Model.h; sourceTree = "<group>"; };
+		DA386D0A2235012C002EB622 /* BaseEffect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseEffect.h; sourceTree = "<group>"; };
+		DA386D0B2235012C002EB622 /* BaseEffect.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseEffect.m; sourceTree = "<group>"; };
+		DA386D0C2235012C002EB622 /* SimpleVertex.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = SimpleVertex.glsl; sourceTree = "<group>"; };
+		DA386D0D2235012C002EB622 /* SimpleFragment.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = SimpleFragment.glsl; sourceTree = "<group>"; };
+		DA386D0E2235012D002EB622 /* Vertex.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Vertex.h; sourceTree = "<group>"; };
+		DA386D12223502A9002EB622 /* Plane.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Plane.h; sourceTree = "<group>"; };
+		DA386D13223502A9002EB622 /* Plane.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Plane.m; sourceTree = "<group>"; };
 		DA9956C222138063002315D0 /* Comp8051Assignment2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Comp8051Assignment2.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DA9956C522138063002315D0 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		DA9956C622138063002315D0 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -103,15 +104,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		DA386C9F22344E69002EB622 /* Shaders */ = {
+		DA386D092235011B002EB622 /* Shaders */ = {
 			isa = PBXGroup;
 			children = (
-				DA386CA022344F34002EB622 /* Shader.fsh */,
-				DA386CA122344F34002EB622 /* Shader.vsh */,
-				DA386C9D22344E4C002EB622 /* ShaderLoader.hpp */,
-				DA386C9C22344E4C002EB622 /* ShaderLoader.cpp */,
+				DA386D0A2235012C002EB622 /* BaseEffect.h */,
+				DA386D0B2235012C002EB622 /* BaseEffect.m */,
+				DA386D0D2235012C002EB622 /* SimpleFragment.glsl */,
+				DA386D0C2235012C002EB622 /* SimpleVertex.glsl */,
+				DA386D0E2235012D002EB622 /* Vertex.h */,
 			);
-			path = Shaders;
+			name = Shaders;
 			sourceTree = "<group>";
 		};
 		DA9956B922138062002315D0 = {
@@ -141,7 +143,13 @@
 		DA9956C422138063002315D0 /* Comp8051Assignment2 */ = {
 			isa = PBXGroup;
 			children = (
-				DA386C9F22344E69002EB622 /* Shaders */,
+				DA386D092235011B002EB622 /* Shaders */,
+				DA386CFF223500F6002EB622 /* Cube.h */,
+				DA386CFE223500F6002EB622 /* Cube.m */,
+				DA386D03223500F6002EB622 /* Model.h */,
+				DA386D01223500F6002EB622 /* Model.m */,
+				DA386D02223500F6002EB622 /* Square.h */,
+				DA386D00223500F6002EB622 /* Square.m */,
 				DA9956C522138063002315D0 /* AppDelegate.h */,
 				DA9956C622138063002315D0 /* AppDelegate.m */,
 				DA9956C822138063002315D0 /* ViewController.h */,
@@ -151,14 +159,8 @@
 				DA9956D022138065002315D0 /* LaunchScreen.storyboard */,
 				DA9956D322138065002315D0 /* Info.plist */,
 				DA9956D422138065002315D0 /* main.m */,
-				DA386C882230B3C9002EB622 /* Renderer.cpp */,
-				DA386C892230B3C9002EB622 /* Renderer.hpp */,
-				DA386C8B2230B4B6002EB622 /* Cell.cpp */,
-				DA386C8C2230B4B6002EB622 /* Cell.hpp */,
-				DA386C8E2230BA9E002EB622 /* Vertex.cpp */,
-				DA386C8F2230BA9E002EB622 /* Vertex.hpp */,
-				DA386C96223360D6002EB622 /* BridgeFile.mm */,
-				DA386C98223360E6002EB622 /* BridgeFile.h */,
+				DA386D12223502A9002EB622 /* Plane.h */,
+				DA386D13223502A9002EB622 /* Plane.m */,
 			);
 			path = Comp8051Assignment2;
 			sourceTree = "<group>";
@@ -284,11 +286,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DA386CA222344F34002EB622 /* Shader.fsh in Resources */,
 				DA9956D222138065002315D0 /* LaunchScreen.storyboard in Resources */,
+				DA386D102235012D002EB622 /* SimpleVertex.glsl in Resources */,
 				DA9956CF22138065002315D0 /* Assets.xcassets in Resources */,
 				DA9956CD22138063002315D0 /* Main.storyboard in Resources */,
-				DA386CA322344F34002EB622 /* Shader.vsh in Resources */,
+				DA386D112235012D002EB622 /* SimpleFragment.glsl in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -313,15 +315,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DA386C97223360D6002EB622 /* BridgeFile.mm in Sources */,
-				DA386C8A2230B3C9002EB622 /* Renderer.cpp in Sources */,
-				DA386C902230BA9E002EB622 /* Vertex.cpp in Sources */,
-				DA386C9E22344E4C002EB622 /* ShaderLoader.cpp in Sources */,
 				DA9956FB2213809C002315D0 /* DisjointSet.cpp in Sources */,
+				DA386D0F2235012D002EB622 /* BaseEffect.m in Sources */,
+				DA386D14223502A9002EB622 /* Plane.m in Sources */,
 				DA9956CA22138063002315D0 /* ViewController.m in Sources */,
-				DA386C8D2230B4B6002EB622 /* Cell.cpp in Sources */,
 				DA9956D522138065002315D0 /* main.m in Sources */,
+				DA386D06223500F6002EB622 /* Model.m in Sources */,
+				DA386D05223500F6002EB622 /* Square.m in Sources */,
 				DA9956FC2213809C002315D0 /* maze.cpp in Sources */,
+				DA386D04223500F6002EB622 /* Cube.m in Sources */,
 				DA9956C722138063002315D0 /* AppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
