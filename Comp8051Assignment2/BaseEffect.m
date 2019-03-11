@@ -14,6 +14,9 @@
     GLuint _modelViewMatrixUniform; //location of _modelViewMatrixUniform
     GLuint _projectionMatrixUniform;
     GLuint _texUniform;
+    GLuint _lightColorUniform;
+    GLuint _lightAmbientIntensityUniform;
+    
 }
 
 - (GLuint)compileShader:(NSString*)shaderName withType:(GLenum)shaderType {
@@ -57,16 +60,20 @@
     glAttachShader(_programHandle, vertexShaderName);
     glAttachShader(_programHandle, fragmentShaderName);
     
+    //VertexAttribPositions
     glBindAttribLocation(_programHandle, VertexAttribPosition, "a_Position");
     glBindAttribLocation(_programHandle, VertexAttribColor, "a_Color");
     glBindAttribLocation(_programHandle, VertexAttribTexCoord, "a_TexCoord");
     
     glLinkProgram(_programHandle);
-    // must be after linking
+    
+    //Uniform matrices, must be after linking
     self.modelViewMatrix = GLKMatrix4Identity; //default value
     _modelViewMatrixUniform = glGetUniformLocation(_programHandle, "u_ModelViewMatrix");
     _projectionMatrixUniform = glGetUniformLocation(_programHandle, "u_ProjectionMatrix");
     _texUniform = glGetUniformLocation(_programHandle, "u_Texture");
+    _lightColorUniform = glGetUniformLocation(_programHandle, "u_Light.Color"); // use strcut name.attribute name
+    _lightAmbientIntensityUniform = glGetUniformLocation(_programHandle, "u_Light.AmbientIntensity");
     
     GLint linkSuccess;
     glGetProgramiv(_programHandle, GL_LINK_STATUS, &linkSuccess);
@@ -81,12 +88,21 @@
 
 - (void)prepareToDraw {
     glUseProgram(_programHandle);
+    
+    //transformation matrices
     glUniformMatrix4fv(_modelViewMatrixUniform, 1, 0, self.modelViewMatrix.m);// location, 1 matrix, no transpose, raw data
     glUniformMatrix4fv(_projectionMatrixUniform, 1, 0, self.projectionMatrix.m);
     
     glActiveTexture(GL_TEXTURE1); //could be any texture slot
     glBindTexture(GL_TEXTURE_2D, self.texture); //loads a 2d texture
+    
+    //textures
     glUniform1i(_texUniform, 1); // for 1 integer, we're using texture unit one
+    
+    //lighting
+    glUniform3f(_lightColorUniform, 1.0, 1.0, 1.0); // 3 floats
+    glUniform1f(_lightAmbientIntensityUniform, 1.5); // 1 float
+    
 }
 
 - (instancetype)initWithVertexShader:(NSString *)vertexShader fragmentShader:
