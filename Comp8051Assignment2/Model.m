@@ -55,7 +55,10 @@
         glVertexAttribPointer(VertexAttribColor, 4, GL_FLOAT, GL_FALSE, sizeof(Vertex), (const GLvoid *)offsetof(Vertex, Color)); // 4 components to a color
         
         glEnableVertexAttribArray(VertexAttribTexCoord);
-        glVertexAttribPointer(VertexAttribTexCoord, 2, GL_FLOAT, GL_FALSE, sizeof(Vertex), (const GLvoid *)offsetof(Vertex, TexCoord)); // 4 components to a color
+        glVertexAttribPointer(VertexAttribTexCoord, 2, GL_FLOAT, GL_FALSE, sizeof(Vertex), (const GLvoid *)offsetof(Vertex, TexCoord)); // 2 components to a texture coordinate
+        
+        glEnableVertexAttribArray(VertexAttribNormal);
+        glVertexAttribPointer(VertexAttribNormal, 3, GL_FLOAT, GL_FALSE, sizeof(Vertex), (const GLvoid *)offsetof(Vertex, Normal)); // 3 components to a normal
         
         // Bind everything back to 0
         glBindVertexArrayOES(0);

@@ -16,7 +16,8 @@
     GLuint _texUniform;
     GLuint _lightColorUniform;
     GLuint _lightAmbientIntensityUniform;
-    
+    GLuint _lightDiffuseIntensityUniform;
+    GLuint _lightDirectionUniform;
 }
 
 - (GLuint)compileShader:(NSString*)shaderName withType:(GLenum)shaderType {
@@ -64,6 +65,7 @@
     glBindAttribLocation(_programHandle, VertexAttribPosition, "a_Position");
     glBindAttribLocation(_programHandle, VertexAttribColor, "a_Color");
     glBindAttribLocation(_programHandle, VertexAttribTexCoord, "a_TexCoord");
+    glBindAttribLocation(_programHandle, VertexAttribNormal, "a_Normal");
     
     glLinkProgram(_programHandle);
     
@@ -74,6 +76,8 @@
     _texUniform = glGetUniformLocation(_programHandle, "u_Texture");
     _lightColorUniform = glGetUniformLocation(_programHandle, "u_Light.Color"); // use strcut name.attribute name
     _lightAmbientIntensityUniform = glGetUniformLocation(_programHandle, "u_Light.AmbientIntensity");
+    _lightDiffuseIntensityUniform = glGetUniformLocation(_programHandle, "u_Light.DiffuseIntensity"); // use strcut name.attribute name
+    _lightDirectionUniform = glGetUniformLocation(_programHandle, "u_Light.Direction");
     
     GLint linkSuccess;
     glGetProgramiv(_programHandle, GL_LINK_STATUS, &linkSuccess);
@@ -99,10 +103,14 @@
     //textures
     glUniform1i(_texUniform, 1); // for 1 integer, we're using texture unit one
     
-    //lighting
+    //ambient lighting
     glUniform3f(_lightColorUniform, 1.0, 1.0, 1.0); // 3 floats
-    glUniform1f(_lightAmbientIntensityUniform, 1.5); // 1 float
+    glUniform1f(_lightAmbientIntensityUniform, 0.1); // 1 float
     
+    //diffuse lighting
+    GLKVector3 lightDirection = GLKVector3Normalize(GLKVector3Make(0,-1,-1)); //down and towards the object
+    glUniform3f(_lightDirectionUniform, lightDirection.x, lightDirection.y, lightDirection.z); //uses normalized vector
+    glUniform1f(_lightDiffuseIntensityUniform, 0.7);
 }
 
 - (instancetype)initWithVertexShader:(NSString *)vertexShader fragmentShader:
