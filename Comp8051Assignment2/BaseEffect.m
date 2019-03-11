@@ -18,6 +18,8 @@
     GLuint _lightAmbientIntensityUniform;
     GLuint _lightDiffuseIntensityUniform;
     GLuint _lightDirectionUniform;
+    GLuint _matSpecularIntensityUniform;
+    GLuint _shininessUniform;
 }
 
 - (GLuint)compileShader:(NSString*)shaderName withType:(GLenum)shaderType {
@@ -78,6 +80,8 @@
     _lightAmbientIntensityUniform = glGetUniformLocation(_programHandle, "u_Light.AmbientIntensity");
     _lightDiffuseIntensityUniform = glGetUniformLocation(_programHandle, "u_Light.DiffuseIntensity"); // use strcut name.attribute name
     _lightDirectionUniform = glGetUniformLocation(_programHandle, "u_Light.Direction");
+    _matSpecularIntensityUniform = glGetUniformLocation(_programHandle, "u_MatSpecularIntensity");
+    _shininessUniform = glGetUniformLocation(_programHandle, "u_Shininess");
     
     GLint linkSuccess;
     glGetProgramiv(_programHandle, GL_LINK_STATUS, &linkSuccess);
@@ -108,9 +112,14 @@
     glUniform1f(_lightAmbientIntensityUniform, 0.1); // 1 float
     
     //diffuse lighting
-    GLKVector3 lightDirection = GLKVector3Normalize(GLKVector3Make(0,-1,-1)); //down and towards the object
+    GLKVector3 lightDirection = GLKVector3Normalize(GLKVector3Make(0,-1,0)); //from the top of the subject
     glUniform3f(_lightDirectionUniform, lightDirection.x, lightDirection.y, lightDirection.z); //uses normalized vector
     glUniform1f(_lightDiffuseIntensityUniform, 0.7);
+    
+    //specular lighting
+    glUniform1f(_lightDiffuseIntensityUniform, 0.7);
+    glUniform1f(_matSpecularIntensityUniform, 2.0);
+    glUniform1f(_shininessUniform, 8.0);
 }
 
 - (instancetype)initWithVertexShader:(NSString *)vertexShader fragmentShader:
