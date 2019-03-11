@@ -13,6 +13,7 @@
     GLuint _programHandle;
     GLuint _modelViewMatrixUniform; //location of _modelViewMatrixUniform
     GLuint _projectionMatrixUniform;
+    GLuint _texUniform;
 }
 
 - (GLuint)compileShader:(NSString*)shaderName withType:(GLenum)shaderType {
@@ -58,12 +59,14 @@
     
     glBindAttribLocation(_programHandle, VertexAttribPosition, "a_Position");
     glBindAttribLocation(_programHandle, VertexAttribColor, "a_Color");
+    glBindAttribLocation(_programHandle, VertexAttribTexCoord, "a_TexCoord");
     
     glLinkProgram(_programHandle);
     // must be after linking
     self.modelViewMatrix = GLKMatrix4Identity; //default value
     _modelViewMatrixUniform = glGetUniformLocation(_programHandle, "u_ModelViewMatrix");
     _projectionMatrixUniform = glGetUniformLocation(_programHandle, "u_ProjectionMatrix");
+    _texUniform = glGetUniformLocation(_programHandle, "u_Texture");
     
     GLint linkSuccess;
     glGetProgramiv(_programHandle, GL_LINK_STATUS, &linkSuccess);
@@ -80,6 +83,10 @@
     glUseProgram(_programHandle);
     glUniformMatrix4fv(_modelViewMatrixUniform, 1, 0, self.modelViewMatrix.m);// location, 1 matrix, no transpose, raw data
     glUniformMatrix4fv(_projectionMatrixUniform, 1, 0, self.projectionMatrix.m);
+    
+    glActiveTexture(GL_TEXTURE1); //could be any texture slot
+    glBindTexture(GL_TEXTURE_2D, self.texture); //loads a 2d texture
+    glUniform1i(_texUniform, 1); // for 1 integer, we're using texture unit one
 }
 
 - (instancetype)initWithVertexShader:(NSString *)vertexShader fragmentShader:

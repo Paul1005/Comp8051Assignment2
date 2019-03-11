@@ -20,9 +20,11 @@
 @property (nonatomic) float rotationY;
 @property (nonatomic) float rotationZ;
 @property (nonatomic) float scale;
+@property (nonatomic) GLuint texture;
 
 - (instancetype)initWithName:(char*)name shader:(BaseEffect*)shader vertices: (Vertex*)vertices vertexCount:(unsigned int)vertexCount indices:(GLubyte*)indices indexCount:(unsigned int)indexCount;
 - (void)renderWithParentModelViewMatrix:(GLKMatrix4)parentModelViewMatrix;
 - (void)updateWithDelta:(NSTimeInterval)dt;
+- (void)loadTexture:(NSString *)filename;
 
 @end

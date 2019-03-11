@@ -48,8 +48,10 @@
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     glEnable(GL_DEPTH_TEST);// takes care of objects drawn on top of other objects
     glEnable(GL_CULL_FACE); //takes care of the own object
-    
-    GLKMatrix4 viewMatrix = GLKMatrix4MakeTranslation(0,-3,-6); // moves everything down by one and back by 5
+    glEnable(GL_BLEND); // enables blending
+    glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA); // blends different textures, also deals with transparency
+    GLKMatrix4 viewMatrix = GLKMatrix4MakeTranslation(0,-3,-5); // moves everything back by 5
+    viewMatrix = GLKMatrix4Rotate(viewMatrix, GLKMathDegreesToRadians(0),1,0,0);// rotate camera up by 00 degrees
     //[_square renderWithParentModelViewMatrix:viewMatrix]; //multiplies the view matrix with the other matrices
     //[_cube renderWithParentModelViewMatrix:viewMatrix];
     [_plane renderWithParentModelViewMatrix:viewMatrix];

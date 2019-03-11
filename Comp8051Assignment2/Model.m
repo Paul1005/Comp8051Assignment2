@@ -54,6 +54,9 @@
         glEnableVertexAttribArray(VertexAttribColor);
         glVertexAttribPointer(VertexAttribColor, 4, GL_FLOAT, GL_FALSE, sizeof(Vertex), (const GLvoid *)offsetof(Vertex, Color)); // 4 components to a color
         
+        glEnableVertexAttribArray(VertexAttribTexCoord);
+        glVertexAttribPointer(VertexAttribTexCoord, 2, GL_FLOAT, GL_FALSE, sizeof(Vertex), (const GLvoid *)offsetof(Vertex, TexCoord)); // 4 components to a color
+        
         // Bind everything back to 0
         glBindVertexArrayOES(0);
         glBindBuffer(GL_ARRAY_BUFFER, 0);
@@ -76,6 +79,7 @@
     GLKMatrix4 modelViewMatrix = GLKMatrix4Multiply(parentModelViewMatrix, [self modelMatrix]);
     
     _shader.modelViewMatrix = modelViewMatrix;
+    _shader.texture = self.texture;
     [_shader prepareToDraw];
     
     glBindVertexArrayOES(_vao); // do this instead of having to type all 4 lines
@@ -86,6 +90,20 @@
 
 - (void)updateWithDelta:(NSTimeInterval)dt{
     
+}
+
+- (void)loadTexture:(NSString *)filename{
+    NSError *error;
+    NSString *path = [[NSBundle mainBundle] pathForResource:filename ofType:nil];
+    
+    NSDictionary *options = @{ GLKTextureLoaderOriginBottomLeft: @YES}; // changed from default top left
+    GLKTextureInfo *info = [GLKTextureLoader textureWithContentsOfFile:path options: options error:&error];
+    
+    if (info == nil){
+        NSLog(@"Error loading file %@", error.localizedDescription);
+    } else{
+        self.texture = info.name;
+    }
 }
 
 @end
