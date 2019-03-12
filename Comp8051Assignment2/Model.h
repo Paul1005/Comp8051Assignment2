@@ -26,5 +26,6 @@
 - (void)renderWithParentModelViewMatrix:(GLKMatrix4)parentModelViewMatrix;
 - (void)updateWithDelta:(NSTimeInterval)dt;
 - (void)loadTexture:(NSString *)filename;
+- (void)setPosition:(float)x y:(float)y z:(float)z;
 
 @end

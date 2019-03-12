@@ -15,6 +15,7 @@
 		DA386D112235012D002EB622 /* SimpleFragment.glsl in Resources */ = {isa = PBXBuildFile; fileRef = DA386D0D2235012C002EB622 /* SimpleFragment.glsl */; };
 		DA386D14223502A9002EB622 /* Plane.m in Sources */ = {isa = PBXBuildFile; fileRef = DA386D13223502A9002EB622 /* Plane.m */; };
 		DA386D1A2235E0B5002EB622 /* dungeon_01.png in Resources */ = {isa = PBXBuildFile; fileRef = DA386D192235E0B5002EB622 /* dungeon_01.png */; };
+		DA386D1D22363D70002EB622 /* CreateMaze.mm in Sources */ = {isa = PBXBuildFile; fileRef = DA386D1C22363D70002EB622 /* CreateMaze.mm */; };
 		DA9956C722138063002315D0 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = DA9956C622138063002315D0 /* AppDelegate.m */; };
 		DA9956CA22138063002315D0 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DA9956C922138063002315D0 /* ViewController.m */; };
 		DA9956CD22138063002315D0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DA9956CB22138063002315D0 /* Main.storyboard */; };
@@ -59,6 +60,8 @@
 		DA386D12223502A9002EB622 /* Plane.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Plane.h; sourceTree = "<group>"; };
 		DA386D13223502A9002EB622 /* Plane.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Plane.m; sourceTree = "<group>"; };
 		DA386D192235E0B5002EB622 /* dungeon_01.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dungeon_01.png; sourceTree = "<group>"; };
+		DA386D1B22363D70002EB622 /* CreateMaze.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CreateMaze.h; sourceTree = "<group>"; };
+		DA386D1C22363D70002EB622 /* CreateMaze.mm */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.objcpp; path = CreateMaze.mm; sourceTree = "<group>"; };
 		DA9956C222138063002315D0 /* Comp8051Assignment2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Comp8051Assignment2.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DA9956C522138063002315D0 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		DA9956C622138063002315D0 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -121,11 +124,6 @@
 		DA9956B922138062002315D0 = {
 			isa = PBXGroup;
 			children = (
-				DA386D192235E0B5002EB622 /* dungeon_01.png */,
-				DA9956F72213809C002315D0 /* DisjointSet.cpp */,
-				DA9956F82213809C002315D0 /* DisjointSet.h */,
-				DA9956FA2213809C002315D0 /* maze.cpp */,
-				DA9956F92213809C002315D0 /* maze.h */,
 				DA9956C422138063002315D0 /* Comp8051Assignment2 */,
 				DA9956DD22138065002315D0 /* Comp8051Assignment2Tests */,
 				DA9956E822138065002315D0 /* Comp8051Assignment2UITests */,
@@ -146,6 +144,11 @@
 		DA9956C422138063002315D0 /* Comp8051Assignment2 */ = {
 			isa = PBXGroup;
 			children = (
+				DA386D192235E0B5002EB622 /* dungeon_01.png */,
+				DA9956F72213809C002315D0 /* DisjointSet.cpp */,
+				DA9956F82213809C002315D0 /* DisjointSet.h */,
+				DA9956FA2213809C002315D0 /* maze.cpp */,
+				DA9956F92213809C002315D0 /* maze.h */,
 				DA386D092235011B002EB622 /* Shaders */,
 				DA386CFF223500F6002EB622 /* Cube.h */,
 				DA386CFE223500F6002EB622 /* Cube.m */,
@@ -158,12 +161,14 @@
 				DA9956C822138063002315D0 /* ViewController.h */,
 				DA9956C922138063002315D0 /* ViewController.m */,
 				DA9956CB22138063002315D0 /* Main.storyboard */,
-				DA9956CE22138065002315D0 /* Assets.xcassets */,
 				DA9956D022138065002315D0 /* LaunchScreen.storyboard */,
 				DA9956D322138065002315D0 /* Info.plist */,
 				DA9956D422138065002315D0 /* main.m */,
 				DA386D12223502A9002EB622 /* Plane.h */,
 				DA386D13223502A9002EB622 /* Plane.m */,
+				DA9956CE22138065002315D0 /* Assets.xcassets */,
+				DA386D1B22363D70002EB622 /* CreateMaze.h */,
+				DA386D1C22363D70002EB622 /* CreateMaze.mm */,
 			);
 			path = Comp8051Assignment2;
 			sourceTree = "<group>";
@@ -326,6 +331,7 @@
 				DA9956D522138065002315D0 /* main.m in Sources */,
 				DA386D06223500F6002EB622 /* Model.m in Sources */,
 				DA386D05223500F6002EB622 /* Square.m in Sources */,
+				DA386D1D22363D70002EB622 /* CreateMaze.mm in Sources */,
 				DA9956FC2213809C002315D0 /* maze.cpp in Sources */,
 				DA386D04223500F6002EB622 /* Cube.m in Sources */,
 				DA9956C722138063002315D0 /* AppDelegate.m in Sources */,

@@ -109,4 +109,8 @@
     }
 }
 
+- (void)setPosition:(float)x y:(float)y z:(float)z{
+    self.position = GLKVector3Make(x,y,z);
+}
+
 @end
