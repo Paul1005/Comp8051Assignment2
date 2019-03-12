@@ -117,7 +117,6 @@
     glUniform1f(_lightDiffuseIntensityUniform, 0.7);
     
     //specular lighting
-    glUniform1f(_lightDiffuseIntensityUniform, 0.7);
     glUniform1f(_matSpecularIntensityUniform, 2.0);
     glUniform1f(_shininessUniform, 8.0);
 }
