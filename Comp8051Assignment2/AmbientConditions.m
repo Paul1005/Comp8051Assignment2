@@ -16,7 +16,7 @@
 -(instancetype)init {
     if((self = [super init])){
         /* Setup default values */
-        self.dayAmbient = 0.1;
+        self.dayAmbient = 0.5;
         self.nightAmbient = 0.01;
         self.dayDiffuse = 0.7;
         self.nightDiffuse = 0.3;
