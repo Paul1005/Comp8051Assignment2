@@ -9,10 +9,13 @@
 #import "CreateMaze.h"
 #include "maze.h"
 #import "Cell.h"
+#import "Cube.h"
 
 @implementation CreateMaze{
     Maze *_maze;
     Cell *_cells[16][16];
+    Cube *_entranceCube;
+    
     int rows;
     int cols;
 }
@@ -28,6 +31,7 @@
             [_cells[i][j] createCell:_shader];
         }
     }
+    _entranceCube = [[Cube alloc] initWithShader:_shader andTexture:@"crate.jpg"];
 }
 
 - (void) draw{
@@ -39,6 +43,11 @@
             [_cells[i][j] renderWithParentModelViewMatrix:viewMatrix posX:j posZ:i];
         }
     }
+    [_entranceCube setScaleX:0.5];
+    [_entranceCube setScaleY:0.5];
+    [_entranceCube setScaleZ:0.5];
+    [_entranceCube renderWithParentModelViewMatrix:viewMatrix];
+    
 }
 
 - (void) update: (NSTimeInterval) timeSinceLastUpdate{
@@ -47,6 +56,7 @@
             [_cells[i][j] updateWithDelta:timeSinceLastUpdate];
         }
     }
+    [_entranceCube updateWithDelta:timeSinceLastUpdate rotate:0.5];
 }
 
 @end
