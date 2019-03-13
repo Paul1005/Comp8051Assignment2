@@ -12,7 +12,7 @@
 
 @implementation Cell{
     Plane *_plane;
-    Cube *_northWall, *_southWall, *_westWall,*_eastWall;
+    Cube *_northWall, *_southWall, *_westWall, *_eastWall;
     bool northWallPresent, southWallPresent, eastWallPresent, westWallPresent;
 };
 
@@ -33,9 +33,9 @@
     }else if(southWallPresent){
         _southWall = [[Cube alloc] initWithShader: shader andTexture:@"southWall.jpg"];
     }else if(eastWallPresent){
-        _westWall = [[Cube alloc] initWithShader: shader andTexture:@"eastWall.jpg"];
+        _eastWall = [[Cube alloc] initWithShader: shader andTexture:@"eastWall.jpg"];
     }else if(westWallPresent){
-        _eastWall = [[Cube alloc] initWithShader: shader andTexture:@"westWall.jpg"];
+        _westWall = [[Cube alloc] initWithShader: shader andTexture:@"westWall.jpg"];
     }
 }
 
