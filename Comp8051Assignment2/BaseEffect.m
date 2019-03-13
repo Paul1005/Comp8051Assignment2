@@ -125,10 +125,10 @@
 }
 
 - (instancetype)initWithVertexShader:(NSString *)vertexShader fragmentShader:
-(NSString *)fragmentShader {
+(NSString *)fragmentShader ambientConditions:(AmbientConditions *) ambientConditions{
     if ((self = [super init])) {
+        _ambientConditions = ambientConditions;
         [self compileVertexShader:vertexShader fragmentShader:fragmentShader];
-        _ambientConditions = [[AmbientConditions alloc] init];
     }
     return self;
 }

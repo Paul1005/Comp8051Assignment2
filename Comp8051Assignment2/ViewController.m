@@ -22,10 +22,13 @@
     BaseEffect *_shader;
     Cube *_cube;
     Plane *_plane;
+    
+    AmbientConditions *_ambientConditions;
 }
 
 - (void) setupScene{
-    _shader = [[BaseEffect alloc] initWithVertexShader:@"SimpleVertex.glsl" fragmentShader:@"SimpleFragment.glsl"];
+    _ambientConditions = [[AmbientConditions alloc] init];
+    _shader = [[BaseEffect alloc] initWithVertexShader:@"SimpleVertex.glsl" fragmentShader:@"SimpleFragment.glsl" ambientConditions:_ambientConditions];
     //_square = [[Square alloc] initWithShader: _shader];
     //_cube = [[Cube alloc] initWithShader: _shader];
     _plane = [[Plane alloc] initWithShader: _shader];
