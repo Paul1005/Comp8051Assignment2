@@ -11,7 +11,7 @@
 
 @interface Cell : NSObject 
 
-- (instancetype) initWithWalls:(bool) n south:(bool) s east:(bool) e west:(bool) w;
+- (instancetype) initWithWalls:(bool)n south:(bool)s east:(bool)e west:(bool)w numrows:(int)rows numcols:(int)cols row:(int)row col:(int)col;
 
 - (void)createCell:(BaseEffect*)shader;
 

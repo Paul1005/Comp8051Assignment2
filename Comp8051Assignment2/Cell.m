@@ -16,12 +16,38 @@
     bool northWallPresent, southWallPresent, eastWallPresent, westWallPresent;
 };
 
--(instancetype) initWithWalls: (bool) n south: (bool) s east: (bool) e west:(bool) w{
+-(instancetype) initWithWalls: (bool) n south: (bool) s east: (bool) e west:(bool) w numrows:(int)rows numcols:(int)cols row:(int)row col:(int)col;{
     if((self = [super init])){
         self->northWallPresent = n;
         self->southWallPresent = s;
         self->eastWallPresent = e;
         self->westWallPresent = w;
+    
+        if(col == 0){
+            //NSLog(@"north");
+            self->southWallPresent = true;
+        } else if(col == cols-1){
+            //NSLog(@"south");
+            self->northWallPresent = true;
+        }
+        
+        if(row == 0){
+            //NSLog(@"west");
+            self->westWallPresent = true;
+        } else if(row == rows-1){
+            //NSLog(@"east");
+            self->eastWallPresent = true;
+        }
+        
+        if(row == 0 && col == 0){
+            //NSLog(@"start");
+            self->southWallPresent = false;
+        }
+        
+        if(row == rows-1 && col == cols-1){
+            //NSLog(@"finish");
+            self->northWallPresent = false;
+        }
     }
     return self;
 }
@@ -30,11 +56,14 @@
     _plane = [[Plane alloc] initWithShader: shader];
     if(northWallPresent){
         _northWall = [[Cube alloc] initWithShader: shader andTexture:@"northWall.jpg"];
-    }else if(southWallPresent){
+    }
+    if(southWallPresent){
         _southWall = [[Cube alloc] initWithShader: shader andTexture:@"southWall.jpg"];
-    }else if(eastWallPresent){
+    }
+    if(eastWallPresent){
         _eastWall = [[Cube alloc] initWithShader: shader andTexture:@"eastWall.jpg"];
-    }else if(westWallPresent){
+    }
+    if(westWallPresent){
         _westWall = [[Cube alloc] initWithShader: shader andTexture:@"westWall.jpg"];
     }
 }
@@ -46,15 +75,18 @@
         [_northWall setPosition:GLKVector3Make(i*2, 0, j*2+0.95)];
         [_northWall setScaleZ: 0.05];
         [_northWall renderWithParentModelViewMatrix:parentModelViewMatrix];
-    }else if(southWallPresent){
+    }
+    if(southWallPresent){
         [_southWall setPosition:GLKVector3Make(i*2, 0, j*2-0.95)];
         [_southWall setScaleZ: 0.05];
         [_southWall renderWithParentModelViewMatrix:parentModelViewMatrix];
-    }else if(eastWallPresent){
+    }
+    if(eastWallPresent){
         [_eastWall setPosition:GLKVector3Make(i*2+0.95, 0, j*2)];
         [_eastWall setScaleX: 0.05];
         [_eastWall renderWithParentModelViewMatrix:parentModelViewMatrix];
-    }else if(westWallPresent){
+    }
+    if(westWallPresent){
         [_westWall setPosition:GLKVector3Make(i*2-0.95, 0, j*2)];
         [_westWall setScaleX: 0.05];
         [_westWall renderWithParentModelViewMatrix:parentModelViewMatrix];
@@ -65,11 +97,14 @@
     [_plane updateWithDelta:dt];
     if(northWallPresent){
         [_northWall updateWithDelta:dt];
-    }else if(southWallPresent){
+    }
+    if(southWallPresent){
         [_southWall updateWithDelta:dt];
-    }else if(eastWallPresent){
+    }
+    if(eastWallPresent){
         [_eastWall updateWithDelta:dt];
-    }else if(westWallPresent){
+    }
+    if(westWallPresent){
         [_westWall updateWithDelta:dt];
     }
 }

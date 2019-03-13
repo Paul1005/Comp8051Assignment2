@@ -24,7 +24,7 @@
     _maze->Create();
     for(int i = 0; i<rows; i++){
         for(int j = 0; j<cols; j++){
-            _cells[i][j] = [[Cell alloc] initWithWalls:_maze->GetCell(i, j).northWallPresent south:_maze->GetCell(i, j).southWallPresent east:_maze->GetCell(i, j).eastWallPresent west:_maze->GetCell(i, j).westWallPresent];
+            _cells[i][j] = [[Cell alloc] initWithWalls:_maze->GetCell(i, j).northWallPresent south:_maze->GetCell(i, j).southWallPresent east:_maze->GetCell(i, j).eastWallPresent west:_maze->GetCell(i, j).westWallPresent numrows:rows numcols:cols row:i col:j];
             [_cells[i][j] createCell:_shader];
         }
     }
@@ -32,7 +32,8 @@
 
 - (void) draw{
     GLKMatrix4 viewMatrix = GLKMatrix4MakeTranslation(-4,-3,-15);
-    viewMatrix = GLKMatrix4Rotate(viewMatrix, GLKMathDegreesToRadians(30),1,1.5,0);
+    viewMatrix = GLKMatrix4Rotate(viewMatrix, GLKMathDegreesToRadians(20),1,0,0);
+    viewMatrix = GLKMatrix4Rotate(viewMatrix, GLKMathDegreesToRadians(55),0,1,0);
     for(int i = 0; i<rows; i++){
         for(int j = 0; j<cols; j++){
             [_cells[i][j] renderWithParentModelViewMatrix:viewMatrix posX:i posZ:j];
