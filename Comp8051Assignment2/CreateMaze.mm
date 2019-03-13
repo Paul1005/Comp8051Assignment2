@@ -83,6 +83,8 @@
     CGPoint diff = CGPointMake(lastLoc.x - location.x, lastLoc.y - location.y);
     
     rotY += -diff.x;
+    translateX += -sinf(rotY)*diff.y/100;
+    translateZ += -cosf(rotY)*diff.y/100;
 }
 
 - (void)doubleTap:(UITapGestureRecognizer *)tap {
@@ -93,8 +95,8 @@
 
 - (void)twoFingerPan:(UIPanGestureRecognizer *)pan {
     CGPoint touchLocation = [pan locationInView:currentView];
-    translateX = touchLocation.x/100;
-    translateZ = touchLocation.y/100;
+    translateX += touchLocation.x/100;
+    translateZ += touchLocation.y/100;
 }
 
 @end
