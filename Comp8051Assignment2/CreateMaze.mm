@@ -8,11 +8,11 @@
 
 #import "CreateMaze.h"
 #include "maze.h"
-#import "Plane.h"
+#import "Cell.h"
 
 @implementation CreateMaze{
     Maze *_maze;
-    Plane *_cells[16][16];
+    Cell *_cells[16][16];
     int rows;
     int cols;
 }
@@ -24,18 +24,18 @@
     _maze->Create();
     for(int i = 0; i<rows; i++){
         for(int j = 0; j<cols; j++){
-            _cells[i][j] = [[Plane alloc] initWithShader: _shader];
+            _cells[i][j] = [[Cell alloc] initWithWalls:_maze->GetCell(i, j).northWallPresent south:_maze->GetCell(i, j).southWallPresent east:_maze->GetCell(i, j).eastWallPresent west:_maze->GetCell(i, j).westWallPresent];
+            [_cells[i][j] createCell:_shader];
         }
     }
 }
 
 - (void) draw{
-    GLKMatrix4 viewMatrix = GLKMatrix4MakeTranslation(-4,-3,-15); 
+    GLKMatrix4 viewMatrix = GLKMatrix4MakeTranslation(-4,-3,-15);
     viewMatrix = GLKMatrix4Rotate(viewMatrix, GLKMathDegreesToRadians(0),1,0,0);// rotate camera up by 00 degrees
     for(int i = 0; i<rows; i++){
         for(int j = 0; j<cols; j++){
-            [_cells[i][j] setPosition:GLKVector3Make(i*2, 0, j*2)];
-            [_cells[i][j] renderWithParentModelViewMatrix:viewMatrix];
+            [_cells[i][j] renderWithParentModelViewMatrix:viewMatrix posX:i posZ:j];
         }
     }
 }

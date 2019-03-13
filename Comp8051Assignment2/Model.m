@@ -31,8 +31,9 @@
         self.rotationX = 0;
         self.rotationY = 0;
         self.rotationZ = 0;
-        self.scale = 1.0;
-        
+        self.scaleX = 1.0;
+        self.scaleY = 1.0;
+        self.scaleZ = 1.0;
         //Create and bind our vertex object, all below will be bound to vao
         glGenVertexArraysOES(1, &_vao);
         glBindVertexArrayOES(_vao);
@@ -74,7 +75,7 @@
     modelMatrix = GLKMatrix4Rotate(modelMatrix, self.rotationX, 1, 0, 0);
     modelMatrix = GLKMatrix4Rotate(modelMatrix, self.rotationY, 0,1,0);
     modelMatrix = GLKMatrix4Rotate(modelMatrix, self.rotationZ, 0,0,1);
-    modelMatrix = GLKMatrix4Scale(modelMatrix, self.scale, self.scale, self.scale);
+    modelMatrix = GLKMatrix4Scale(modelMatrix, self.scaleX, self.scaleY, self.scaleZ);
     return modelMatrix;
 }
 
@@ -107,10 +108,6 @@
     } else{
         self.texture = info.name;
     }
-}
-
-- (void)setPosition:(float)x y:(float)y z:(float)z{
-    self.position = GLKVector3Make(x,y,z);
 }
 
 @end
