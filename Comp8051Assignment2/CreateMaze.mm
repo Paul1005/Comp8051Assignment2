@@ -66,7 +66,8 @@
     CGPoint lastLoc = [touch previousLocationInView:currentView];
     CGPoint diff = CGPointMake(lastLoc.x - location.x, lastLoc.y - location.y);
     
-    viewMatrix = GLKMatrix4Rotate(viewMatrix, GLKMathDegreesToRadians(diff.x),0,1,0);
+    viewMatrix = GLKMatrix4Translate(viewMatrix, 0, 0, -diff.y/100);
+    viewMatrix = GLKMatrix4Rotate(viewMatrix, GLKMathDegreesToRadians(-diff.x),0,1,0);
 }
 
 @end
