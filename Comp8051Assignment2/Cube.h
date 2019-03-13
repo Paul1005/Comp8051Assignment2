@@ -12,4 +12,8 @@
 
 - (instancetype)initWithShader:(BaseEffect*)shader;
 
+- (instancetype)initWithShader:(BaseEffect*)shader andTexture:(NSString *)texture;
+
+- (void)updateWithDelta:(NSTimeInterval)dt rotate: (float)rot;
+
 @end

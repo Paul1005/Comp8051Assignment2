@@ -8,13 +8,19 @@
 
 /* Begin PBXBuildFile section */
 		DA386D04223500F6002EB622 /* Cube.m in Sources */ = {isa = PBXBuildFile; fileRef = DA386CFE223500F6002EB622 /* Cube.m */; };
-		DA386D05223500F6002EB622 /* Square.m in Sources */ = {isa = PBXBuildFile; fileRef = DA386D00223500F6002EB622 /* Square.m */; };
 		DA386D06223500F6002EB622 /* Model.m in Sources */ = {isa = PBXBuildFile; fileRef = DA386D01223500F6002EB622 /* Model.m */; };
 		DA386D0F2235012D002EB622 /* BaseEffect.m in Sources */ = {isa = PBXBuildFile; fileRef = DA386D0B2235012C002EB622 /* BaseEffect.m */; };
 		DA386D102235012D002EB622 /* SimpleVertex.glsl in Resources */ = {isa = PBXBuildFile; fileRef = DA386D0C2235012C002EB622 /* SimpleVertex.glsl */; };
 		DA386D112235012D002EB622 /* SimpleFragment.glsl in Resources */ = {isa = PBXBuildFile; fileRef = DA386D0D2235012C002EB622 /* SimpleFragment.glsl */; };
 		DA386D14223502A9002EB622 /* Plane.m in Sources */ = {isa = PBXBuildFile; fileRef = DA386D13223502A9002EB622 /* Plane.m */; };
 		DA386D1A2235E0B5002EB622 /* dungeon_01.png in Resources */ = {isa = PBXBuildFile; fileRef = DA386D192235E0B5002EB622 /* dungeon_01.png */; };
+		DA386D1D22363D70002EB622 /* CreateMaze.mm in Sources */ = {isa = PBXBuildFile; fileRef = DA386D1C22363D70002EB622 /* CreateMaze.mm */; };
+		DA386D2222387669002EB622 /* eastWall.jpg in Resources */ = {isa = PBXBuildFile; fileRef = DA386D1E22387667002EB622 /* eastWall.jpg */; };
+		DA386D2322387669002EB622 /* southWall.jpg in Resources */ = {isa = PBXBuildFile; fileRef = DA386D1F22387668002EB622 /* southWall.jpg */; };
+		DA386D2422387669002EB622 /* northWall.jpg in Resources */ = {isa = PBXBuildFile; fileRef = DA386D2022387668002EB622 /* northWall.jpg */; };
+		DA386D2522387669002EB622 /* westWall.jpg in Resources */ = {isa = PBXBuildFile; fileRef = DA386D2122387669002EB622 /* westWall.jpg */; };
+		DA386D28223880DE002EB622 /* Cell.m in Sources */ = {isa = PBXBuildFile; fileRef = DA386D27223880DE002EB622 /* Cell.m */; };
+		DA386D2A22399DF6002EB622 /* crate.jpg in Resources */ = {isa = PBXBuildFile; fileRef = DA386D2922399DF5002EB622 /* crate.jpg */; };
 		DA9956C722138063002315D0 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = DA9956C622138063002315D0 /* AppDelegate.m */; };
 		DA9956CA22138063002315D0 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DA9956C922138063002315D0 /* ViewController.m */; };
 		DA9956CD22138063002315D0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DA9956CB22138063002315D0 /* Main.storyboard */; };
@@ -48,9 +54,7 @@
 /* Begin PBXFileReference section */
 		DA386CFE223500F6002EB622 /* Cube.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Cube.m; sourceTree = "<group>"; };
 		DA386CFF223500F6002EB622 /* Cube.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Cube.h; sourceTree = "<group>"; };
-		DA386D00223500F6002EB622 /* Square.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Square.m; sourceTree = "<group>"; };
 		DA386D01223500F6002EB622 /* Model.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Model.m; sourceTree = "<group>"; };
-		DA386D02223500F6002EB622 /* Square.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Square.h; sourceTree = "<group>"; };
 		DA386D03223500F6002EB622 /* Model.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Model.h; sourceTree = "<group>"; };
 		DA386D0A2235012C002EB622 /* BaseEffect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseEffect.h; sourceTree = "<group>"; };
 		DA386D0B2235012C002EB622 /* BaseEffect.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseEffect.m; sourceTree = "<group>"; };
@@ -60,6 +64,15 @@
 		DA386D12223502A9002EB622 /* Plane.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Plane.h; sourceTree = "<group>"; };
 		DA386D13223502A9002EB622 /* Plane.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Plane.m; sourceTree = "<group>"; };
 		DA386D192235E0B5002EB622 /* dungeon_01.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dungeon_01.png; sourceTree = "<group>"; };
+		DA386D1B22363D70002EB622 /* CreateMaze.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CreateMaze.h; sourceTree = "<group>"; };
+		DA386D1C22363D70002EB622 /* CreateMaze.mm */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.objcpp; path = CreateMaze.mm; sourceTree = "<group>"; };
+		DA386D1E22387667002EB622 /* eastWall.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = eastWall.jpg; sourceTree = "<group>"; };
+		DA386D1F22387668002EB622 /* southWall.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = southWall.jpg; sourceTree = "<group>"; };
+		DA386D2022387668002EB622 /* northWall.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = northWall.jpg; sourceTree = "<group>"; };
+		DA386D2122387669002EB622 /* westWall.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = westWall.jpg; sourceTree = "<group>"; };
+		DA386D26223880DE002EB622 /* Cell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Cell.h; sourceTree = "<group>"; };
+		DA386D27223880DE002EB622 /* Cell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Cell.m; sourceTree = "<group>"; };
+		DA386D2922399DF5002EB622 /* crate.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = crate.jpg; sourceTree = "<group>"; };
 		DA9956C222138063002315D0 /* Comp8051Assignment2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Comp8051Assignment2.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DA9956C522138063002315D0 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		DA9956C622138063002315D0 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -124,11 +137,6 @@
 		DA9956B922138062002315D0 = {
 			isa = PBXGroup;
 			children = (
-				DA386D192235E0B5002EB622 /* dungeon_01.png */,
-				DA9956F72213809C002315D0 /* DisjointSet.cpp */,
-				DA9956F82213809C002315D0 /* DisjointSet.h */,
-				DA9956FA2213809C002315D0 /* maze.cpp */,
-				DA9956F92213809C002315D0 /* maze.h */,
 				DA9956C422138063002315D0 /* Comp8051Assignment2 */,
 				DA9956DD22138065002315D0 /* Comp8051Assignment2Tests */,
 				DA9956E822138065002315D0 /* Comp8051Assignment2UITests */,
@@ -149,19 +157,26 @@
 		DA9956C422138063002315D0 /* Comp8051Assignment2 */ = {
 			isa = PBXGroup;
 			children = (
+				DA386D2922399DF5002EB622 /* crate.jpg */,
+				DA386D1E22387667002EB622 /* eastWall.jpg */,
+				DA386D2022387668002EB622 /* northWall.jpg */,
+				DA386D1F22387668002EB622 /* southWall.jpg */,
+				DA386D2122387669002EB622 /* westWall.jpg */,
+				DA386D192235E0B5002EB622 /* dungeon_01.png */,
+				DA9956F72213809C002315D0 /* DisjointSet.cpp */,
+				DA9956F82213809C002315D0 /* DisjointSet.h */,
+				DA9956FA2213809C002315D0 /* maze.cpp */,
+				DA9956F92213809C002315D0 /* maze.h */,
 				DA386D092235011B002EB622 /* Shaders */,
 				DA386CFF223500F6002EB622 /* Cube.h */,
 				DA386CFE223500F6002EB622 /* Cube.m */,
 				DA386D03223500F6002EB622 /* Model.h */,
 				DA386D01223500F6002EB622 /* Model.m */,
-				DA386D02223500F6002EB622 /* Square.h */,
-				DA386D00223500F6002EB622 /* Square.m */,
 				DA9956C522138063002315D0 /* AppDelegate.h */,
 				DA9956C622138063002315D0 /* AppDelegate.m */,
 				DA9956C822138063002315D0 /* ViewController.h */,
 				DA9956C922138063002315D0 /* ViewController.m */,
 				DA9956CB22138063002315D0 /* Main.storyboard */,
-				DA9956CE22138065002315D0 /* Assets.xcassets */,
 				DA9956D022138065002315D0 /* LaunchScreen.storyboard */,
 				DA9956D322138065002315D0 /* Info.plist */,
 				DA9956D422138065002315D0 /* main.m */,
@@ -169,6 +184,11 @@
 				DA386D13223502A9002EB622 /* Plane.m */,
 				E3591BFD223802EE00D7FD5E /* AmbientConditions.h */,
 				E3591BFE2238031400D7FD5E /* AmbientConditions.m */,
+				DA9956CE22138065002315D0 /* Assets.xcassets */,
+				DA386D1B22363D70002EB622 /* CreateMaze.h */,
+				DA386D1C22363D70002EB622 /* CreateMaze.mm */,
+				DA386D26223880DE002EB622 /* Cell.h */,
+				DA386D27223880DE002EB622 /* Cell.m */,
 			);
 			path = Comp8051Assignment2;
 			sourceTree = "<group>";
@@ -294,12 +314,17 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DA386D2522387669002EB622 /* westWall.jpg in Resources */,
+				DA386D2A22399DF6002EB622 /* crate.jpg in Resources */,
 				DA9956D222138065002315D0 /* LaunchScreen.storyboard in Resources */,
 				DA386D102235012D002EB622 /* SimpleVertex.glsl in Resources */,
+				DA386D2222387669002EB622 /* eastWall.jpg in Resources */,
 				DA9956CF22138065002315D0 /* Assets.xcassets in Resources */,
 				DA9956CD22138063002315D0 /* Main.storyboard in Resources */,
 				DA386D112235012D002EB622 /* SimpleFragment.glsl in Resources */,
 				DA386D1A2235E0B5002EB622 /* dungeon_01.png in Resources */,
+				DA386D2322387669002EB622 /* southWall.jpg in Resources */,
+				DA386D2422387669002EB622 /* northWall.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -330,8 +355,9 @@
 				DA9956CA22138063002315D0 /* ViewController.m in Sources */,
 				E3591BFF2238031400D7FD5E /* AmbientConditions.m in Sources */,
 				DA9956D522138065002315D0 /* main.m in Sources */,
+				DA386D28223880DE002EB622 /* Cell.m in Sources */,
 				DA386D06223500F6002EB622 /* Model.m in Sources */,
-				DA386D05223500F6002EB622 /* Square.m in Sources */,
+				DA386D1D22363D70002EB622 /* CreateMaze.mm in Sources */,
 				DA9956FC2213809C002315D0 /* maze.cpp in Sources */,
 				DA386D04223500F6002EB622 /* Cube.m in Sources */,
 				DA9956C722138063002315D0 /* AppDelegate.m in Sources */,

@@ -9,29 +9,23 @@
 #import "ViewController.h"
 #import "Vertex.h"
 #import "BaseEffect.h"
-#import "Square.h"
-#import "Cube.h"
-#import "Plane.h"
 
 @interface ViewController ()
 
 @end
 
 @implementation ViewController{
-    Square *_square;
     BaseEffect *_shader;
-    Cube *_cube;
-    Plane *_plane;
-    
-    AmbientConditions *_ambientConditions;
+    CreateMaze *_maze;
 }
 
 - (void) setupScene{
     _ambientConditions = [[AmbientConditions alloc] init];
     _shader = [[BaseEffect alloc] initWithVertexShader:@"SimpleVertex.glsl" fragmentShader:@"SimpleFragment.glsl" ambientConditions:_ambientConditions];
-    //_square = [[Square alloc] initWithShader: _shader];
-    //_cube = [[Cube alloc] initWithShader: _shader];
-    _plane = [[Plane alloc] initWithShader: _shader];
+    
+    _maze = [[CreateMaze alloc] init];
+    [_maze setupMaze:5 cols: 5 shader: _shader];
+    
     _shader.projectionMatrix = GLKMatrix4MakePerspective(GLKMathDegreesToRadians(85.0), self.view.bounds.size.width / self.view.bounds.size.height, 1, 150); //fov, aspect ratio, near plane, far plane
 }
 
@@ -52,6 +46,7 @@
     
     
     [EAGLContext setCurrentContext:view.context];
+    
     [self setupScene];
 }
 
@@ -69,17 +64,12 @@
     glEnable(GL_CULL_FACE); //takes care of the own object
     glEnable(GL_BLEND); // enables blending
     glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA); // blends different textures, also deals with transparency
-    GLKMatrix4 viewMatrix = GLKMatrix4MakeTranslation(0,-3,-5); // moves everything back by 5
-    viewMatrix = GLKMatrix4Rotate(viewMatrix, GLKMathDegreesToRadians(0),1,0,0);// rotate camera up by 00 degrees
-    //[_square renderWithParentModelViewMatrix:viewMatrix]; //multiplies the view matrix with the other matrices
-    //[_cube renderWithParentModelViewMatrix:viewMatrix];
-    [_plane renderWithParentModelViewMatrix:viewMatrix];
+
+    [_maze draw];
 }
 
 -(void)update {
-    //[_square updateWithDelta:self.timeSinceLastUpdate];
-    //[_cube updateWithDelta:self.timeSinceLastUpdate];
-    [_plane updateWithDelta:self.timeSinceLastUpdate];
+    [_maze update: self.timeSinceLastUpdate];
 }
 
 
