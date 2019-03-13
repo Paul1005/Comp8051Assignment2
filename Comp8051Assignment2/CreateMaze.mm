@@ -36,7 +36,7 @@
     viewMatrix = GLKMatrix4Rotate(viewMatrix, GLKMathDegreesToRadians(55),0,1,0);
     for(int i = 0; i<rows; i++){
         for(int j = 0; j<cols; j++){
-            [_cells[i][j] renderWithParentModelViewMatrix:viewMatrix posX:i posZ:j];
+            [_cells[i][j] renderWithParentModelViewMatrix:viewMatrix posX:j posZ:i];
         }
     }
 }

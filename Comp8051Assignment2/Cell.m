@@ -23,30 +23,24 @@
         self->eastWallPresent = e;
         self->westWallPresent = w;
     
-        if(col == 0){
-            //NSLog(@"north");
-            self->southWallPresent = true;
-        } else if(col == cols-1){
-            //NSLog(@"south");
+        if(row == 0){
             self->northWallPresent = true;
+        } else if(row == rows-1){
+            self->southWallPresent = true;
         }
         
-        if(row == 0){
-            //NSLog(@"west");
+        if(col == 0){
             self->westWallPresent = true;
-        } else if(row == rows-1){
-            //NSLog(@"east");
+        } else if(col == cols-1){
             self->eastWallPresent = true;
         }
         
         if(row == 0 && col == 0){
-            //NSLog(@"start");
-            self->southWallPresent = false;
+            self->northWallPresent = false;
         }
         
         if(row == rows-1 && col == cols-1){
-            //NSLog(@"finish");
-            self->northWallPresent = false;
+            self->southWallPresent = false;
         }
     }
     return self;
@@ -68,26 +62,26 @@
     }
 }
 
-- (void)renderWithParentModelViewMatrix:(GLKMatrix4)parentModelViewMatrix posX:(int) i posZ:(int) j{
-    [_plane setPosition:GLKVector3Make(i*2, 0, j*2)];
+- (void)renderWithParentModelViewMatrix:(GLKMatrix4)parentModelViewMatrix posX:(int) x posZ:(int) z {
+    [_plane setPosition:GLKVector3Make(x*2, 0, z*2)];
     [_plane renderWithParentModelViewMatrix:parentModelViewMatrix];
     if(northWallPresent){
-        [_northWall setPosition:GLKVector3Make(i*2, 0, j*2+0.95)];
+        [_northWall setPosition:GLKVector3Make(x*2, 0, z*2-0.95)];
         [_northWall setScaleZ: 0.05];
         [_northWall renderWithParentModelViewMatrix:parentModelViewMatrix];
     }
     if(southWallPresent){
-        [_southWall setPosition:GLKVector3Make(i*2, 0, j*2-0.95)];
+        [_southWall setPosition:GLKVector3Make(x*2, 0, z*2+0.95)];
         [_southWall setScaleZ: 0.05];
         [_southWall renderWithParentModelViewMatrix:parentModelViewMatrix];
     }
     if(eastWallPresent){
-        [_eastWall setPosition:GLKVector3Make(i*2+0.95, 0, j*2)];
+        [_eastWall setPosition:GLKVector3Make(x*2+0.95, 0, z*2)];
         [_eastWall setScaleX: 0.05];
         [_eastWall renderWithParentModelViewMatrix:parentModelViewMatrix];
     }
     if(westWallPresent){
-        [_westWall setPosition:GLKVector3Make(i*2-0.95, 0, j*2)];
+        [_westWall setPosition:GLKVector3Make(x*2-0.95, 0, z*2)];
         [_westWall setScaleX: 0.05];
         [_westWall renderWithParentModelViewMatrix:parentModelViewMatrix];
     }
