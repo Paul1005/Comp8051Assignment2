@@ -20,6 +20,7 @@
 		DA386D2422387669002EB622 /* northWall.jpg in Resources */ = {isa = PBXBuildFile; fileRef = DA386D2022387668002EB622 /* northWall.jpg */; };
 		DA386D2522387669002EB622 /* westWall.jpg in Resources */ = {isa = PBXBuildFile; fileRef = DA386D2122387669002EB622 /* westWall.jpg */; };
 		DA386D28223880DE002EB622 /* Cell.m in Sources */ = {isa = PBXBuildFile; fileRef = DA386D27223880DE002EB622 /* Cell.m */; };
+		DA386D2A22399DF6002EB622 /* crate.jpg in Resources */ = {isa = PBXBuildFile; fileRef = DA386D2922399DF5002EB622 /* crate.jpg */; };
 		DA9956C722138063002315D0 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = DA9956C622138063002315D0 /* AppDelegate.m */; };
 		DA9956CA22138063002315D0 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DA9956C922138063002315D0 /* ViewController.m */; };
 		DA9956CD22138063002315D0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DA9956CB22138063002315D0 /* Main.storyboard */; };
@@ -70,6 +71,7 @@
 		DA386D2122387669002EB622 /* westWall.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = westWall.jpg; sourceTree = "<group>"; };
 		DA386D26223880DE002EB622 /* Cell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Cell.h; sourceTree = "<group>"; };
 		DA386D27223880DE002EB622 /* Cell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Cell.m; sourceTree = "<group>"; };
+		DA386D2922399DF5002EB622 /* crate.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = crate.jpg; sourceTree = "<group>"; };
 		DA9956C222138063002315D0 /* Comp8051Assignment2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Comp8051Assignment2.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DA9956C522138063002315D0 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		DA9956C622138063002315D0 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -152,6 +154,7 @@
 		DA9956C422138063002315D0 /* Comp8051Assignment2 */ = {
 			isa = PBXGroup;
 			children = (
+				DA386D2922399DF5002EB622 /* crate.jpg */,
 				DA386D1E22387667002EB622 /* eastWall.jpg */,
 				DA386D2022387668002EB622 /* northWall.jpg */,
 				DA386D1F22387668002EB622 /* southWall.jpg */,
@@ -307,6 +310,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DA386D2522387669002EB622 /* westWall.jpg in Resources */,
+				DA386D2A22399DF6002EB622 /* crate.jpg in Resources */,
 				DA9956D222138065002315D0 /* LaunchScreen.storyboard in Resources */,
 				DA386D102235012D002EB622 /* SimpleVertex.glsl in Resources */,
 				DA386D2222387669002EB622 /* eastWall.jpg in Resources */,

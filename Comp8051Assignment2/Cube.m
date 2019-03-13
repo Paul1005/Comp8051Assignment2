@@ -85,9 +85,9 @@ const static GLubyte indices[] = {
     return self;
 }
 
-- (void)updateWithDelta:(NSTimeInterval)dt{
+- (void)updateWithDelta:(NSTimeInterval)dt rotate: (float)rot{
     //self.rotationZ += M_PI * dt;
-    //self.rotationY += M_PI/8 * dt;
+    self.rotationY += M_PI * rot * dt;
 }
 
 @end
