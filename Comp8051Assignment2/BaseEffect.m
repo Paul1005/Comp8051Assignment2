@@ -8,6 +8,7 @@
 
 #import "BaseEffect.h"
 #import "Vertex.h"
+#import "AmbientConditions.h"
 
 @implementation BaseEffect {
     GLuint _programHandle;
@@ -20,6 +21,8 @@
     GLuint _lightDirectionUniform;
     GLuint _matSpecularIntensityUniform;
     GLuint _shininessUniform;
+    
+    AmbientConditions *_ambientConditions;
 }
 
 - (GLuint)compileShader:(NSString*)shaderName withType:(GLenum)shaderType {
@@ -109,12 +112,12 @@
     
     //ambient lighting
     glUniform3f(_lightColorUniform, 1.0, 1.0, 1.0); // 3 floats
-    glUniform1f(_lightAmbientIntensityUniform, 0.1); // 1 float
+    glUniform1f(_lightAmbientIntensityUniform, [_ambientConditions GetAmbient]); // 1 float
     
     //diffuse lighting
     GLKVector3 lightDirection = GLKVector3Normalize(GLKVector3Make(0,-1,0)); //from the top of the subject
     glUniform3f(_lightDirectionUniform, lightDirection.x, lightDirection.y, lightDirection.z); //uses normalized vector
-    glUniform1f(_lightDiffuseIntensityUniform, 0.7);
+    glUniform1f(_lightDiffuseIntensityUniform, [_ambientConditions GetDiffuse]);
     
     //specular lighting
     glUniform1f(_matSpecularIntensityUniform, 2.0);
@@ -125,6 +128,7 @@
 (NSString *)fragmentShader {
     if ((self = [super init])) {
         [self compileVertexShader:vertexShader fragmentShader:fragmentShader];
+        _ambientConditions = [[AmbientConditions alloc] init];
     }
     return self;
 }

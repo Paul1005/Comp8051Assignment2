@@ -25,6 +25,7 @@
 		DA9956EA22138065002315D0 /* Comp8051Assignment2UITests.m in Sources */ = {isa = PBXBuildFile; fileRef = DA9956E922138065002315D0 /* Comp8051Assignment2UITests.m */; };
 		DA9956FB2213809C002315D0 /* DisjointSet.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DA9956F72213809C002315D0 /* DisjointSet.cpp */; };
 		DA9956FC2213809C002315D0 /* maze.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DA9956FA2213809C002315D0 /* maze.cpp */; };
+		E3591BFF2238031400D7FD5E /* AmbientConditions.m in Sources */ = {isa = PBXBuildFile; fileRef = E3591BFE2238031400D7FD5E /* AmbientConditions.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -79,6 +80,8 @@
 		DA9956F82213809C002315D0 /* DisjointSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DisjointSet.h; sourceTree = "<group>"; };
 		DA9956F92213809C002315D0 /* maze.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = maze.h; sourceTree = "<group>"; };
 		DA9956FA2213809C002315D0 /* maze.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = maze.cpp; sourceTree = "<group>"; };
+		E3591BFD223802EE00D7FD5E /* AmbientConditions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AmbientConditions.h; sourceTree = "<group>"; };
+		E3591BFE2238031400D7FD5E /* AmbientConditions.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AmbientConditions.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -164,6 +167,8 @@
 				DA9956D422138065002315D0 /* main.m */,
 				DA386D12223502A9002EB622 /* Plane.h */,
 				DA386D13223502A9002EB622 /* Plane.m */,
+				E3591BFD223802EE00D7FD5E /* AmbientConditions.h */,
+				E3591BFE2238031400D7FD5E /* AmbientConditions.m */,
 			);
 			path = Comp8051Assignment2;
 			sourceTree = "<group>";
@@ -323,6 +328,7 @@
 				DA386D0F2235012D002EB622 /* BaseEffect.m in Sources */,
 				DA386D14223502A9002EB622 /* Plane.m in Sources */,
 				DA9956CA22138063002315D0 /* ViewController.m in Sources */,
+				E3591BFF2238031400D7FD5E /* AmbientConditions.m in Sources */,
 				DA9956D522138065002315D0 /* main.m in Sources */,
 				DA386D06223500F6002EB622 /* Model.m in Sources */,
 				DA386D05223500F6002EB622 /* Square.m in Sources */,
