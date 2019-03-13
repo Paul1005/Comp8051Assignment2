@@ -15,6 +15,8 @@
 @end
 
 @implementation ViewController{
+    AmbientConditions *_ambientConditions;
+    
     BaseEffect *_shader;
     CreateMaze *_maze;
 }
