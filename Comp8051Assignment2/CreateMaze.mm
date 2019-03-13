@@ -31,9 +31,9 @@
 }
 
 - (void) draw{
-    GLKMatrix4 viewMatrix = GLKMatrix4MakeTranslation(-4,-3,-15);
-    viewMatrix = GLKMatrix4Rotate(viewMatrix, GLKMathDegreesToRadians(20),1,0,0);
-    viewMatrix = GLKMatrix4Rotate(viewMatrix, GLKMathDegreesToRadians(55),0,1,0);
+    GLKMatrix4 viewMatrix = GLKMatrix4MakeTranslation(0, 0, -3);
+    //viewMatrix = GLKMatrix4Rotate(viewMatrix, GLKMathDegreesToRadians(0),1,0,0);
+    viewMatrix = GLKMatrix4Rotate(viewMatrix, GLKMathDegreesToRadians(180),0,1,0);
     for(int i = 0; i<rows; i++){
         for(int j = 0; j<cols; j++){
             [_cells[i][j] renderWithParentModelViewMatrix:viewMatrix posX:j posZ:i];
