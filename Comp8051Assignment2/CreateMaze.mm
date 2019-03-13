@@ -32,7 +32,7 @@
 
 - (void) draw{
     GLKMatrix4 viewMatrix = GLKMatrix4MakeTranslation(-4,-3,-15);
-    viewMatrix = GLKMatrix4Rotate(viewMatrix, GLKMathDegreesToRadians(0),1,0,0);// rotate camera up by 00 degrees
+    viewMatrix = GLKMatrix4Rotate(viewMatrix, GLKMathDegreesToRadians(30),1,1.5,0);
     for(int i = 0; i<rows; i++){
         for(int j = 0; j<cols; j++){
             [_cells[i][j] renderWithParentModelViewMatrix:viewMatrix posX:i posZ:j];

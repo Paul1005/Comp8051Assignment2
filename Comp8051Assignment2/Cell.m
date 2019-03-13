@@ -48,15 +48,15 @@
         [_northWall renderWithParentModelViewMatrix:parentModelViewMatrix];
     }else if(southWallPresent){
         [_southWall setPosition:GLKVector3Make(i*2, 2, j*2-0.95)];
-        [_northWall setScaleZ: 0.05];
+        [_southWall setScaleZ: 0.05];
         [_southWall renderWithParentModelViewMatrix:parentModelViewMatrix];
     }else if(eastWallPresent){
         [_eastWall setPosition:GLKVector3Make(i*2+0.95, 2, j*2)];
-        [_northWall setScaleX: 0.05];
+        [_eastWall setScaleX: 0.05];
         [_eastWall renderWithParentModelViewMatrix:parentModelViewMatrix];
     }else if(westWallPresent){
         [_westWall setPosition:GLKVector3Make(i*2-0.95, 2, j*2)];
-        [_northWall setScaleX: 0.05];
+        [_westWall setScaleX: 0.05];
         [_westWall renderWithParentModelViewMatrix:parentModelViewMatrix];
     }
 }
