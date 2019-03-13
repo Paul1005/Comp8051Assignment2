@@ -77,9 +77,17 @@ const static GLubyte indices[] = {
     return self;
 }
 
+-(instancetype)initWithShader:(BaseEffect*)shader andTexture:(NSString *)texture{
+    if ((self = [super initWithName:"cube" shader:shader vertices:(Vertex*)vertices vertexCount:sizeof(vertices)/sizeof(vertices[0]) indices:(GLubyte*)indices indexCount:sizeof(indices)/sizeof(indices[0])])) {
+        [self loadTexture:texture];
+        
+    }
+    return self;
+}
+
 - (void)updateWithDelta:(NSTimeInterval)dt{
     //self.rotationZ += M_PI * dt;
-    self.rotationY += M_PI/8 * dt;
+    //self.rotationY += M_PI/8 * dt;
 }
 
 @end

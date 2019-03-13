@@ -109,12 +109,12 @@
     
     //ambient lighting
     glUniform3f(_lightColorUniform, 1.0, 1.0, 1.0); // 3 floats
-    glUniform1f(_lightAmbientIntensityUniform, 0.1); // 1 float
+    glUniform1f(_lightAmbientIntensityUniform, 0.5); // 1 float
     
     //diffuse lighting
     GLKVector3 lightDirection = GLKVector3Normalize(GLKVector3Make(0,-1,0)); //from the top of the subject
     glUniform3f(_lightDirectionUniform, lightDirection.x, lightDirection.y, lightDirection.z); //uses normalized vector
-    glUniform1f(_lightDiffuseIntensityUniform, 0.7);
+    glUniform1f(_lightDiffuseIntensityUniform, 0.5);
     
     //specular lighting
     glUniform1f(_matSpecularIntensityUniform, 2.0);
