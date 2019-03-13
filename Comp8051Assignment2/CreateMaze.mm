@@ -50,10 +50,11 @@
 }
 
 - (void) draw{
-    viewMatrix = GLKMatrix4MakeTranslation(0, 0, -3);
-    viewMatrix = GLKMatrix4Translate(viewMatrix, translateX, 0, translateZ);
+    viewMatrix = GLKMatrix4Identity;
     viewMatrix = GLKMatrix4Rotate(viewMatrix, GLKMathDegreesToRadians(180),0,1,0);
     viewMatrix = GLKMatrix4Rotate(viewMatrix, GLKMathDegreesToRadians(rotY),0,1,0);
+    viewMatrix = GLKMatrix4Translate(viewMatrix, 0, 0, 3);
+    viewMatrix = GLKMatrix4Translate(viewMatrix, translateX, 0, translateZ);
     
     for(int i = 0; i<rows; i++){
         for(int j = 0; j<cols; j++){
