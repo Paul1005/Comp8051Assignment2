@@ -22,6 +22,8 @@
 }
 
 - (void) setupMaze: (int) rows cols:(int)cols shader:(BaseEffect*)_shader view:(GLKView *) view{
+    viewMatrix = GLKMatrix4MakeTranslation(0, 0, -3);
+    viewMatrix = GLKMatrix4Rotate(viewMatrix, GLKMathDegreesToRadians(180),0,1,0);
     currentView = view;
     self->rows = rows;
     self->cols = cols;
@@ -37,9 +39,7 @@
 }
 
 - (void) draw{
-    viewMatrix = GLKMatrix4MakeTranslation(0, 0, -3);
-    //viewMatrix = GLKMatrix4Rotate(viewMatrix, GLKMathDegreesToRadians(0),1,0,0);
-    viewMatrix = GLKMatrix4Rotate(viewMatrix, GLKMathDegreesToRadians(180),0,1,0);
+
     for(int i = 0; i<rows; i++){
         for(int j = 0; j<cols; j++){
             [_cells[i][j] renderWithParentModelViewMatrix:viewMatrix posX:j posZ:i];
@@ -66,7 +66,7 @@
     CGPoint lastLoc = [touch previousLocationInView:currentView];
     CGPoint diff = CGPointMake(lastLoc.x - location.x, lastLoc.y - location.y);
     
-    //viewMatrix = ;
+    viewMatrix = GLKMatrix4Rotate(viewMatrix, GLKMathDegreesToRadians(diff.x),0,1,0);
 }
 
 @end

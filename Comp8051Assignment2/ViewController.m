@@ -23,7 +23,7 @@
     _shader = [[BaseEffect alloc] initWithVertexShader:@"SimpleVertex.glsl" fragmentShader:@"SimpleFragment.glsl"];
     
     _maze = [[CreateMaze alloc] init];
-    [_maze setupMaze:5 cols: 5 shader: shader view: view];
+    [_maze setupMaze:5 cols: 5 shader: _shader view: view];
     
     _shader.projectionMatrix = GLKMatrix4MakePerspective(GLKMathDegreesToRadians(85.0), self.view.bounds.size.width / self.view.bounds.size.height, 1, 150); //fov, aspect ratio, near plane, far plane
 }
@@ -53,6 +53,10 @@
 
 -(void)update {
     [_maze update: self.timeSinceLastUpdate];
+}
+
+- (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event {
+    [_maze touchesMoved:touches withEvent:event]; // ###
 }
 
 @end

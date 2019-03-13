@@ -17,4 +17,6 @@
 
 - (void) update: (NSTimeInterval) timeSinceLastUpdate;
 
+- (void) touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event;
+
 @end
