@@ -8,10 +8,10 @@
 
 #import <UIKit/UIKit.h>
 #import <GLKit/GLKit.h>
+#import "AmbientConditions.h"
 #import "CreateMaze.h"
 
 @interface ViewController : GLKViewController
-
 
 @end
 

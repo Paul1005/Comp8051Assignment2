@@ -15,12 +15,15 @@
 @end
 
 @implementation ViewController{
+    AmbientConditions *_ambientConditions;
+    
     BaseEffect *_shader;
     CreateMaze *_maze;
 }
 
 - (void) setupScene{
-    _shader = [[BaseEffect alloc] initWithVertexShader:@"SimpleVertex.glsl" fragmentShader:@"SimpleFragment.glsl"];
+    _ambientConditions = [[AmbientConditions alloc] init];
+    _shader = [[BaseEffect alloc] initWithVertexShader:@"SimpleVertex.glsl" fragmentShader:@"SimpleFragment.glsl" ambientConditions:_ambientConditions];
     
     _maze = [[CreateMaze alloc] init];
     [_maze setupMaze:5 cols: 5 shader: _shader];
@@ -35,9 +38,25 @@
     view.context = [[EAGLContext alloc] initWithAPI: kEAGLRenderingAPIOpenGLES2];
     view.drawableDepthFormat = GLKViewDrawableDepthFormat16; // sets up a depth buffer
     
+    
+    UIButton *button = [UIButton buttonWithType:UIButtonTypeSystem];//Custom];
+    button.frame = CGRectMake(0, 50, 200, 10);
+    [button setTitle:@"Toggle Day/Night" forState:UIControlStateNormal];
+    [button addTarget:self action:@selector(onClick:) forControlEvents:UIControlEventTouchDown];
+    [button setEnabled:YES];
+    [self.view addSubview:button];
+    
+    
     [EAGLContext setCurrentContext:view.context];
     
     [self setupScene];
+}
+
+-(void)onClick:(id)sender
+{
+    // Set Day to the inverse of the current Day setting.
+    [_ambientConditions SetDay:![_ambientConditions GetDay]];
+    [self resignFirstResponder];
 }
 
 - (void)glkView:(GLKView *)view drawInRect:(CGRect) rect{
@@ -54,5 +73,7 @@
 -(void)update {
     [_maze update: self.timeSinceLastUpdate];
 }
+
+
 
 @end

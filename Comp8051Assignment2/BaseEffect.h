@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 #import <GLKit/GLkit.h>
+#import "AmbientConditions.h"
 
 @interface BaseEffect : NSObject
 
@@ -18,7 +19,8 @@
 @property (assign) GLuint texture;
 
 - (id)initWithVertexShader:(NSString *)vertexShader
-            fragmentShader:(NSString *)fragmentShader;
+            fragmentShader:(NSString *)fragmentShader
+         ambientConditions:(AmbientConditions *) ambientConditions;
 - (void)prepareToDraw;
 
 @end
