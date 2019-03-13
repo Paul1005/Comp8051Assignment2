@@ -19,11 +19,12 @@
     GLKMatrix4 viewMatrix;
     int rows;
     int cols;
+    float rotY;
+    float translateX;
+    float translateZ;
 }
 
 - (void) setupMaze: (int) rows cols:(int)cols shader:(BaseEffect*)_shader view:(GLKView *) view{
-    viewMatrix = GLKMatrix4MakeTranslation(0, 0, -3);
-    viewMatrix = GLKMatrix4Rotate(viewMatrix, GLKMathDegreesToRadians(180),0,1,0);
     currentView = view;
     self->rows = rows;
     self->cols = cols;
@@ -36,10 +37,18 @@
         }
     }
     _entranceCube = [[Cube alloc] initWithShader:_shader andTexture:@"crate.jpg"];
+    
+    UITapGestureRecognizer * doubleTapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(doubleTap:)];
+    doubleTapRecognizer.numberOfTapsRequired = 2;
+    [view addGestureRecognizer:doubleTapRecognizer];
 }
 
 - (void) draw{
-
+    viewMatrix = GLKMatrix4MakeTranslation(0, 0, -3);
+    viewMatrix = GLKMatrix4Translate(viewMatrix, translateX, 0, translateZ);
+    viewMatrix = GLKMatrix4Rotate(viewMatrix, GLKMathDegreesToRadians(180),0,1,0);
+    viewMatrix = GLKMatrix4Rotate(viewMatrix, GLKMathDegreesToRadians(rotY),0,1,0);
+    
     for(int i = 0; i<rows; i++){
         for(int j = 0; j<cols; j++){
             [_cells[i][j] renderWithParentModelViewMatrix:viewMatrix posX:j posZ:i];
@@ -66,8 +75,15 @@
     CGPoint lastLoc = [touch previousLocationInView:currentView];
     CGPoint diff = CGPointMake(lastLoc.x - location.x, lastLoc.y - location.y);
     
-    viewMatrix = GLKMatrix4Translate(viewMatrix, 0, 0, -diff.y/100);
-    viewMatrix = GLKMatrix4Rotate(viewMatrix, GLKMathDegreesToRadians(-diff.x),0,1,0);
+    rotY = -diff.x;
+    translateX = sinf(-diff.y/100);
+    translateZ = cosf(-diff.y/100);
+}
+
+- (void)doubleTap:(UITapGestureRecognizer *)tap {
+    rotY = 0;
+    translateX = 0;
+    translateZ = 0;
 }
 
 @end
