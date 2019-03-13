@@ -15,12 +15,14 @@
     Maze *_maze;
     Cell *_cells[16][16];
     Cube *_entranceCube;
-    
+    GLKView * currentView;
+    GLKMatrix4 viewMatrix;
     int rows;
     int cols;
 }
 
-- (void) setupMaze: (int) rows cols:(int)cols shader:(BaseEffect*)_shader{
+- (void) setupMaze: (int) rows cols:(int)cols shader:(BaseEffect*)_shader view:(GLKView *) view{
+    currentView = view;
     self->rows = rows;
     self->cols = cols;
     _maze = new Maze(rows, cols);
@@ -35,7 +37,7 @@
 }
 
 - (void) draw{
-    GLKMatrix4 viewMatrix = GLKMatrix4MakeTranslation(0, 0, -3);
+    viewMatrix = GLKMatrix4MakeTranslation(0, 0, -3);
     //viewMatrix = GLKMatrix4Rotate(viewMatrix, GLKMathDegreesToRadians(0),1,0,0);
     viewMatrix = GLKMatrix4Rotate(viewMatrix, GLKMathDegreesToRadians(180),0,1,0);
     for(int i = 0; i<rows; i++){
@@ -47,7 +49,6 @@
     [_entranceCube setScaleY:0.5];
     [_entranceCube setScaleZ:0.5];
     [_entranceCube renderWithParentModelViewMatrix:viewMatrix];
-    
 }
 
 - (void) update: (NSTimeInterval) timeSinceLastUpdate{
@@ -57,6 +58,15 @@
         }
     }
     [_entranceCube updateWithDelta:timeSinceLastUpdate rotate:0.5];
+}
+
+- (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event {
+    UITouch * touch = [touches anyObject];
+    CGPoint location = [touch locationInView:currentView];
+    CGPoint lastLoc = [touch previousLocationInView:currentView];
+    CGPoint diff = CGPointMake(lastLoc.x - location.x, lastLoc.y - location.y);
+    
+    //viewMatrix = ;
 }
 
 @end

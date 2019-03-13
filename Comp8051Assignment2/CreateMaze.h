@@ -11,7 +11,7 @@
 
 @interface CreateMaze: NSObject
 
-- (void) setupMaze: (int) rows cols:(int)cols shader:(BaseEffect*)_shader;
+- (void) setupMaze: (int) rows cols:(int)cols shader:(BaseEffect*)_shader view:(GLKView *) view;
 
 - (void) draw;
 
