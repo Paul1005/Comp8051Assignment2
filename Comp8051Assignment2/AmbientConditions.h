@@ -26,6 +26,7 @@ typedef NS_OPTIONS(NSInteger, Conditions) {
 
 -(instancetype)init;
 -(void)SetDay:(Boolean) daytime;
+-(Boolean)GetDay;
 -(GLfloat)GetAmbient;
 -(GLfloat)GetDiffuse;
 

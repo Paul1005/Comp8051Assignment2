@@ -35,6 +35,10 @@
     }
 }
 
+-(Boolean)GetDay {
+    return (self.conditions & ConditionsDay);
+}
+
 -(GLfloat)GetAmbient {
     if(self.conditions & ConditionsDay) {
         return self.dayAmbient;
