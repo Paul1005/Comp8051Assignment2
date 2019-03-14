@@ -15,12 +15,18 @@
     Maze *_maze;
     Cell *_cells[16][16];
     Cube *_entranceCube;
-    
+    GLKView * currentView;
+    GLKMatrix4 viewMatrix;
     int rows;
     int cols;
+    float rotY;
+    float translateX;
+    float translateZ;
 }
 
-- (void) setupMaze: (int) rows cols:(int)cols shader:(BaseEffect*)_shader{
+- (void) setupMaze: (int) rows cols:(int)cols shader:(BaseEffect*)_shader view:(GLKView *) view{
+    currentView = view;
+    rotY = 180;
     self->rows = rows;
     self->cols = cols;
     _maze = new Maze(rows, cols);
@@ -32,12 +38,27 @@
         }
     }
     _entranceCube = [[Cube alloc] initWithShader:_shader andTexture:@"crate.jpg"];
+    
+    UITapGestureRecognizer * doubleTapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(doubleTap:)];
+    doubleTapRecognizer.numberOfTapsRequired = 2;
+    [view addGestureRecognizer:doubleTapRecognizer];
+    
+    UIPanGestureRecognizer * panRecognizer = [[UIPanGestureRecognizer alloc] initWithTarget:self
+                                                                                     action:@selector(twoFingerPan:)];
+    panRecognizer.minimumNumberOfTouches = 2;
+    panRecognizer.maximumNumberOfTouches = 2;
+    [view addGestureRecognizer:panRecognizer];
 }
 
 - (void) draw{
-    GLKMatrix4 viewMatrix = GLKMatrix4MakeTranslation(0, 0, -3);
-    //viewMatrix = GLKMatrix4Rotate(viewMatrix, GLKMathDegreesToRadians(0),1,0,0);
-    viewMatrix = GLKMatrix4Rotate(viewMatrix, GLKMathDegreesToRadians(180),0,1,0);
+    if (rotY >= 360){
+        rotY = 0;
+    }
+    viewMatrix = GLKMatrix4Identity;
+    viewMatrix = GLKMatrix4Rotate(viewMatrix, GLKMathDegreesToRadians(rotY),0,1,0);
+    viewMatrix = GLKMatrix4Translate(viewMatrix, 0, 0, 3);
+    viewMatrix = GLKMatrix4Translate(viewMatrix, translateX, 0, translateZ);
+    
     for(int i = 0; i<rows; i++){
         for(int j = 0; j<cols; j++){
             [_cells[i][j] renderWithParentModelViewMatrix:viewMatrix posX:j posZ:i];
@@ -47,7 +68,6 @@
     [_entranceCube setScaleY:0.5];
     [_entranceCube setScaleZ:0.5];
     [_entranceCube renderWithParentModelViewMatrix:viewMatrix];
-    
 }
 
 - (void) update: (NSTimeInterval) timeSinceLastUpdate{
@@ -57,6 +77,30 @@
         }
     }
     [_entranceCube updateWithDelta:timeSinceLastUpdate rotate:0.5];
+}
+
+- (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event {
+    UITouch * touch = [touches anyObject];
+    CGPoint location = [touch locationInView:currentView];
+    CGPoint lastLoc = [touch previousLocationInView:currentView];
+    CGPoint diff = CGPointMake(lastLoc.x - location.x, lastLoc.y - location.y);
+    
+    translateX += -sinf(GLKMathDegreesToRadians(rotY))*diff.y/100;
+    translateZ += cosf(GLKMathDegreesToRadians(rotY))*diff.y/100;
+    rotY += -diff.x;
+}
+
+- (void)doubleTap:(UITapGestureRecognizer *)tap {
+    rotY = 180;
+    translateX = 0;
+    translateZ = 0;
+}
+
+- (void)twoFingerPan:(UIPanGestureRecognizer *)pan {
+    CGPoint touchLocation = [pan locationInView:currentView];
+    translateX += -sinf(GLKMathDegreesToRadians(rotY))*touchLocation.y/1000;
+    translateZ += cosf(GLKMathDegreesToRadians(rotY))*touchLocation.y/1000;
+    NSLog(@"%f", translateX);
 }
 
 @end

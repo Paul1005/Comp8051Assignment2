@@ -21,12 +21,12 @@
     CreateMaze *_maze;
 }
 
-- (void) setupScene{
+- (void) setupScene: (GLKView *) view{
     _ambientConditions = [[AmbientConditions alloc] init];
     _shader = [[BaseEffect alloc] initWithVertexShader:@"SimpleVertex.glsl" fragmentShader:@"SimpleFragment.glsl" ambientConditions:_ambientConditions];
     
     _maze = [[CreateMaze alloc] init];
-    [_maze setupMaze:5 cols: 5 shader: _shader];
+    [_maze setupMaze:5 cols: 5 shader: _shader view: view];
     
     _shader.projectionMatrix = GLKMatrix4MakePerspective(GLKMathDegreesToRadians(85.0), self.view.bounds.size.width / self.view.bounds.size.height, 1, 150); //fov, aspect ratio, near plane, far plane
 }
@@ -49,7 +49,7 @@
     
     [EAGLContext setCurrentContext:view.context];
     
-    [self setupScene];
+    [self setupScene: view];
 }
 
 -(void)onClick:(id)sender
@@ -74,6 +74,8 @@
     [_maze update: self.timeSinceLastUpdate];
 }
 
-
+- (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event {
+    [_maze touchesMoved:touches withEvent:event]; // ###
+}
 
 @end

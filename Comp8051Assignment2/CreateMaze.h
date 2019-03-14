@@ -11,10 +11,12 @@
 
 @interface CreateMaze: NSObject
 
-- (void) setupMaze: (int) rows cols:(int)cols shader:(BaseEffect*)_shader;
+- (void) setupMaze: (int) rows cols:(int)cols shader:(BaseEffect*)_shader view:(GLKView *) view;
 
 - (void) draw;
 
 - (void) update: (NSTimeInterval) timeSinceLastUpdate;
+
+- (void) touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event;
 
 @end
