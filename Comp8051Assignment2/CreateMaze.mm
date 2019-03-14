@@ -50,6 +50,9 @@
 }
 
 - (void) draw{
+    if (rotY >= 360){
+        rotY = 0;
+    }
     viewMatrix = GLKMatrix4Identity;
     viewMatrix = GLKMatrix4Rotate(viewMatrix, GLKMathDegreesToRadians(180),0,1,0);
     viewMatrix = GLKMatrix4Rotate(viewMatrix, GLKMathDegreesToRadians(rotY),0,1,0);
@@ -82,9 +85,9 @@
     CGPoint lastLoc = [touch previousLocationInView:currentView];
     CGPoint diff = CGPointMake(lastLoc.x - location.x, lastLoc.y - location.y);
     
+    translateX += sinf(GLKMathDegreesToRadians(rotY+180))*diff.y/100;
+    translateZ += cosf(GLKMathDegreesToRadians(rotY+180))*diff.y/100;
     rotY += -diff.x;
-    translateX += -sinf(rotY)*diff.y/100;
-    translateZ += -cosf(rotY)*diff.y/100;
 }
 
 - (void)doubleTap:(UITapGestureRecognizer *)tap {
@@ -95,8 +98,9 @@
 
 - (void)twoFingerPan:(UIPanGestureRecognizer *)pan {
     CGPoint touchLocation = [pan locationInView:currentView];
-    translateX += touchLocation.x/100;
-    translateZ += touchLocation.y/100;
+    translateX += sinf(GLKMathDegreesToRadians(rotY+180))*touchLocation.y/1000;
+    translateZ += cosf(GLKMathDegreesToRadians(rotY+180))*touchLocation.y/1000;
+    NSLog(@"%f", translateX);
 }
 
 @end
