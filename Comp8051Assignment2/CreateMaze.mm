@@ -26,6 +26,7 @@
 
 - (void) setupMaze: (int) rows cols:(int)cols shader:(BaseEffect*)_shader view:(GLKView *) view{
     currentView = view;
+    rotY = 180;
     self->rows = rows;
     self->cols = cols;
     _maze = new Maze(rows, cols);
@@ -54,7 +55,6 @@
         rotY = 0;
     }
     viewMatrix = GLKMatrix4Identity;
-    viewMatrix = GLKMatrix4Rotate(viewMatrix, GLKMathDegreesToRadians(180),0,1,0);
     viewMatrix = GLKMatrix4Rotate(viewMatrix, GLKMathDegreesToRadians(rotY),0,1,0);
     viewMatrix = GLKMatrix4Translate(viewMatrix, 0, 0, 3);
     viewMatrix = GLKMatrix4Translate(viewMatrix, translateX, 0, translateZ);
@@ -85,21 +85,21 @@
     CGPoint lastLoc = [touch previousLocationInView:currentView];
     CGPoint diff = CGPointMake(lastLoc.x - location.x, lastLoc.y - location.y);
     
-    translateX += sinf(GLKMathDegreesToRadians(rotY+180))*diff.y/100;
-    translateZ += cosf(GLKMathDegreesToRadians(rotY+180))*diff.y/100;
+    translateX += -sinf(GLKMathDegreesToRadians(rotY))*diff.y/100;
+    translateZ += cosf(GLKMathDegreesToRadians(rotY))*diff.y/100;
     rotY += -diff.x;
 }
 
 - (void)doubleTap:(UITapGestureRecognizer *)tap {
-    rotY = 0;
+    rotY = 180;
     translateX = 0;
     translateZ = 0;
 }
 
 - (void)twoFingerPan:(UIPanGestureRecognizer *)pan {
     CGPoint touchLocation = [pan locationInView:currentView];
-    translateX += sinf(GLKMathDegreesToRadians(rotY+180))*touchLocation.y/1000;
-    translateZ += cosf(GLKMathDegreesToRadians(rotY+180))*touchLocation.y/1000;
+    translateX += -sinf(GLKMathDegreesToRadians(rotY))*touchLocation.y/1000;
+    translateZ += cosf(GLKMathDegreesToRadians(rotY))*touchLocation.y/1000;
     NSLog(@"%f", translateX);
 }
 
