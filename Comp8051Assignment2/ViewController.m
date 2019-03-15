@@ -39,24 +39,42 @@
     view.context = [[EAGLContext alloc] initWithAPI: kEAGLRenderingAPIOpenGLES2];
     view.drawableDepthFormat = GLKViewDrawableDepthFormat16; // sets up a depth buffer
     
-    
-    UIButton *button = [UIButton buttonWithType:UIButtonTypeSystem];//Custom];
+    // Toggle Day/Night Button
+    UIButton *button = [UIButton buttonWithType:UIButtonTypeSystem];
     button.frame = CGRectMake(0, 50, 200, 10);
+    button.tag = 1;
     [button setTitle:@"Toggle Day/Night" forState:UIControlStateNormal];
     [button addTarget:self action:@selector(onClick:) forControlEvents:UIControlEventTouchDown];
     [button setEnabled:YES];
     [self.view addSubview:button];
     
+    // Toggle Fog Button
+    UIButton *button2 = [UIButton buttonWithType:UIButtonTypeSystem];
+    button2.frame = CGRectMake(0, 100, 200, 10);
+    button2.tag = 2;
+    [button2 setTitle:@"Toggle Fog" forState:UIControlStateNormal];
+    [button2 addTarget:self action:@selector(onClick:) forControlEvents:UIControlEventTouchDown];
+    [button2 setEnabled:YES];
+    [self.view addSubview:button2];
+    
     
     [EAGLContext setCurrentContext:view.context];
-    
     [self setupScene: view];
 }
 
 -(void)onClick:(id)sender
 {
-    // Set Day to the inverse of the current Day setting.
-    [_ambientConditions SetDay:![_ambientConditions GetDay]];
+    switch([sender tag]) {
+        case 1:
+            // Set Day to the inverse of the current Day setting.
+            [_ambientConditions SetDay:![_ambientConditions GetDay]];
+            break;
+        case 2:
+            [_ambientConditions SetFog:![_ambientConditions GetFog]];
+            break;
+            // Undefined behavior if we don't have a tag.
+    }
+
     [self resignFirstResponder];
 }
 
