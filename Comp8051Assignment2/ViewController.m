@@ -65,6 +65,7 @@
     glEnable(GL_DEPTH_TEST);// takes care of objects drawn on top of other objects
     glEnable(GL_CULL_FACE); //takes care of the own object
     glEnable(GL_BLEND); // enables blending
+    //glEnable(GL_FOG);
     glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA); // blends different textures, also deals with transparency
 
     [_maze draw];

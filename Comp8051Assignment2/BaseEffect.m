@@ -21,6 +21,9 @@
     GLuint _lightDirectionUniform;
     GLuint _matSpecularIntensityUniform;
     GLuint _shininessUniform;
+    GLuint _spotLightDirectionUniform;
+    GLuint _spotLightPositionUniform;
+    GLuint _spotLightCutOffUniform;
     
     AmbientConditions *_ambientConditions;
 }
@@ -37,7 +40,7 @@
     GLuint shaderHandle = glCreateShader(shaderType);
     
     const char * shaderStringUTF8 = [shaderString UTF8String];
-    int shaderStringLength = [shaderString length];
+    int shaderStringLength = (int)[shaderString length];
     glShaderSource(shaderHandle, 1, &shaderStringUTF8, &shaderStringLength);
     
     glCompileShader(shaderHandle);
@@ -85,6 +88,9 @@
     _lightDirectionUniform = glGetUniformLocation(_programHandle, "u_Light.Direction");
     _matSpecularIntensityUniform = glGetUniformLocation(_programHandle, "u_MatSpecularIntensity");
     _shininessUniform = glGetUniformLocation(_programHandle, "u_Shininess");
+    _spotLightDirectionUniform = glGetUniformLocation(_programHandle, "u_SpotLight.Direction");
+    _spotLightPositionUniform = glGetUniformLocation(_programHandle, "u_SpotLight.Position");
+    _spotLightCutOffUniform = glGetUniformLocation(_programHandle, "u_SpotLight.cutOff");
     
     GLint linkSuccess;
     glGetProgramiv(_programHandle, GL_LINK_STATUS, &linkSuccess);
@@ -122,6 +128,11 @@
     //specular lighting
     glUniform1f(_matSpecularIntensityUniform, 2.0);
     glUniform1f(_shininessUniform, 8.0);
+    
+    //spotlight
+    glUniform3f(_spotLightDirectionUniform, 0, GLKMathDegreesToRadians(_viewRotY), 0); //uses normalized vector
+    glUniform3f(_spotLightPositionUniform, _viewPosX, 0, _viewPosZ); //uses normalized vector
+    glUniform1f(_spotLightCutOffUniform, cosf(GLKMathDegreesToRadians(12.5)));
 }
 
 - (instancetype)initWithVertexShader:(NSString *)vertexShader fragmentShader:

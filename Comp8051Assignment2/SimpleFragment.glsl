@@ -13,12 +13,28 @@ struct Light {
     lowp float DiffuseIntensity;
     lowp vec3 Direction;
 };
+
+struct SpotLight {
+    lowp vec3 position;
+    lowp vec3 direction;
+    lowp float cutOff;
+};
+
 uniform Light u_Light;
+uniform SpotLight u_SpotLight;
 
 void main(void) {
+    lowp vec3 lightDir = normalize(u_SpotLight.position - frag_Position);
+    
+    // check if lighting is inside the spotlight cone
+    lowp float theta = dot(lightDir, normalize(-u_SpotLight.direction));
     
     // Ambient
     lowp vec3 AmbientColor = u_Light.Color * u_Light.AmbientIntensity;
+    
+    if(theta > u_SpotLight.cutOff){
+        AmbientColor += 0.5;
+    }
     
     //Diffuse
     lowp vec3 Normal = normalize(frag_Normal); // normalize the normal b/c it might not be normal anymore after being interpelated

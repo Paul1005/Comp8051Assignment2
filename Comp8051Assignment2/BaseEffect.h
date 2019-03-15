@@ -17,6 +17,9 @@
 @property (nonatomic, assign) GLKMatrix4 modelViewMatrix;
 @property (nonatomic, assign) GLKMatrix4 projectionMatrix;
 @property (assign) GLuint texture;
+@property (assign) float viewPosX;
+@property (assign) float viewPosZ;
+@property (assign) float viewRotY;
 
 - (id)initWithVertexShader:(NSString *)vertexShader
             fragmentShader:(NSString *)fragmentShader
