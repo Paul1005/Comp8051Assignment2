@@ -22,6 +22,7 @@
         self.nightDiffuse = 0.3;
         
         [self SetDay:true];
+        [self SetFog:false];
     }
 
     return self;
@@ -52,6 +53,19 @@
         return self.dayDiffuse;
     } else {
         return self.nightDiffuse;
-    }}
+    }
+}
+
+-(void)SetFog:(Boolean) fog {
+    if(fog == true) {
+        self.conditions |= ConditionsFoggy;
+    } else {
+        self.conditions &= ~ConditionsFoggy;
+    }
+}
+
+-(Boolean)GetFog {
+    return (self.conditions & ConditionsFoggy);
+}
 
 @end
