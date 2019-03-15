@@ -20,8 +20,10 @@
         self.nightAmbient = 0.01;
         self.dayDiffuse = 0.7;
         self.nightDiffuse = 0.3;
+        self.flashlight = 0;
         
         [self SetDay:true];
+        [self SetFog:false];
     }
 
     return self;
@@ -52,6 +54,29 @@
         return self.dayDiffuse;
     } else {
         return self.nightDiffuse;
-    }}
+    }
+}
 
+-(void)SetFog:(Boolean) fog {
+    if(fog == true) {
+        self.conditions |= ConditionsFoggy;
+    } else {
+        self.conditions &= ~ConditionsFoggy;
+    }
+}
+
+-(Boolean)GetFog {
+    return (self.conditions & ConditionsFoggy);
+}
+
+-(void)ToggleFlashlight{
+    if(self.flashlight == 1){
+        self.flashlight = 0;
+    } else if(self.flashlight == 0){
+        self.flashlight = 1;
+    }
+}
+-(GLuint)GetFlashlightStatus{
+    return self.flashlight;
+}
 @end

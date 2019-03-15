@@ -15,6 +15,7 @@
     Maze *_maze;
     Cell *_cells[16][16];
     Cube *_entranceCube;
+    BaseEffect* _shader;
     GLKView * currentView;
     GLKMatrix4 viewMatrix;
     int rows;
@@ -26,7 +27,9 @@
 
 - (void) setupMaze: (int) rows cols:(int)cols shader:(BaseEffect*)_shader view:(GLKView *) view{
     currentView = view;
+    self->_shader = _shader;
     rotY = 180;
+    translateZ = 3;
     self->rows = rows;
     self->cols = cols;
     _maze = new Maze(rows, cols);
@@ -42,12 +45,6 @@
     UITapGestureRecognizer * doubleTapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(doubleTap:)];
     doubleTapRecognizer.numberOfTapsRequired = 2;
     [view addGestureRecognizer:doubleTapRecognizer];
-    
-    UIPanGestureRecognizer * panRecognizer = [[UIPanGestureRecognizer alloc] initWithTarget:self
-                                                                                     action:@selector(twoFingerPan:)];
-    panRecognizer.minimumNumberOfTouches = 2;
-    panRecognizer.maximumNumberOfTouches = 2;
-    [view addGestureRecognizer:panRecognizer];
 }
 
 - (void) draw{
@@ -56,7 +53,6 @@
     }
     viewMatrix = GLKMatrix4Identity;
     viewMatrix = GLKMatrix4Rotate(viewMatrix, GLKMathDegreesToRadians(rotY),0,1,0);
-    viewMatrix = GLKMatrix4Translate(viewMatrix, 0, 0, 3);
     viewMatrix = GLKMatrix4Translate(viewMatrix, translateX, 0, translateZ);
     
     for(int i = 0; i<rows; i++){
@@ -93,14 +89,7 @@
 - (void)doubleTap:(UITapGestureRecognizer *)tap {
     rotY = 180;
     translateX = 0;
-    translateZ = 0;
-}
-
-- (void)twoFingerPan:(UIPanGestureRecognizer *)pan {
-    CGPoint touchLocation = [pan locationInView:currentView];
-    translateX += -sinf(GLKMathDegreesToRadians(rotY))*touchLocation.y/1000;
-    translateZ += cosf(GLKMathDegreesToRadians(rotY))*touchLocation.y/1000;
-    NSLog(@"%f", translateX);
+    translateZ = 3;
 }
 
 @end

@@ -23,6 +23,7 @@ typedef NS_OPTIONS(NSInteger, Conditions) {
 @property GLfloat nightAmbient;
 @property GLfloat dayDiffuse;
 @property GLfloat nightDiffuse;
+@property GLuint flashlight;
 
 -(instancetype)init;
 -(void)SetDay:(Boolean) daytime;
@@ -30,6 +31,11 @@ typedef NS_OPTIONS(NSInteger, Conditions) {
 -(GLfloat)GetAmbient;
 -(GLfloat)GetDiffuse;
 
+-(void)SetFog:(Boolean) fog;
+-(Boolean)GetFog;
+
+-(void)ToggleFlashlight;
+-(GLuint)GetFlashlightStatus;
 @end
 
 
