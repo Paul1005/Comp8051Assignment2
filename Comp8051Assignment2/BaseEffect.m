@@ -88,8 +88,8 @@
     _lightDirectionUniform = glGetUniformLocation(_programHandle, "u_Light.Direction");
     _matSpecularIntensityUniform = glGetUniformLocation(_programHandle, "u_MatSpecularIntensity");
     _shininessUniform = glGetUniformLocation(_programHandle, "u_Shininess");
-    _spotLightDirectionUniform = glGetUniformLocation(_programHandle, "u_SpotLight.Direction");
-    _spotLightPositionUniform = glGetUniformLocation(_programHandle, "u_SpotLight.Position");
+    _spotLightDirectionUniform = glGetUniformLocation(_programHandle, "u_SpotLight.direction");
+    _spotLightPositionUniform = glGetUniformLocation(_programHandle, "u_SpotLight.position");
     _spotLightCutOffUniform = glGetUniformLocation(_programHandle, "u_SpotLight.cutOff");
     
     GLint linkSuccess;
@@ -130,9 +130,12 @@
     glUniform1f(_shininessUniform, 8.0);
     
     //spotlight
-    glUniform3f(_spotLightDirectionUniform, 0, GLKMathDegreesToRadians(_viewRotY), 0); //uses normalized vector
-    glUniform3f(_spotLightPositionUniform, _viewPosX, 0, _viewPosZ); //uses normalized vector
-    glUniform1f(_spotLightCutOffUniform, cosf(GLKMathDegreesToRadians(12.5)));
+    glUniform3f(_spotLightDirectionUniform, 0, 0, -1); //uses normalized vector
+    glUniform3f(_spotLightPositionUniform, 0, 0, 3); //uses normalized vector
+    glUniform1f(_spotLightCutOffUniform, 6.25);
+    
+    /*lowp vec3 lightDir = normalize(u_SpotLight.position - frag_Position);
+    float theta = GLKVector3DotProduct(lightDir, normalize(-u_SpotLight.direction));*/
 }
 
 - (instancetype)initWithVertexShader:(NSString *)vertexShader fragmentShader:

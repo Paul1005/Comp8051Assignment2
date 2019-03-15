@@ -57,6 +57,14 @@
     [button2 setEnabled:YES];
     [self.view addSubview:button2];
     
+    // Toggle Fog Button
+    UIButton *button3 = [UIButton buttonWithType:UIButtonTypeSystem];
+    button2.frame = CGRectMake(0, 150, 200, 10);
+    button2.tag = 3;
+    [button2 setTitle:@"Toggle Flashlight" forState:UIControlStateNormal];
+    [button2 addTarget:self action:@selector(onClick:) forControlEvents:UIControlEventTouchDown];
+    [button2 setEnabled:YES];
+    [self.view addSubview:button3];
     
     [EAGLContext setCurrentContext:view.context];
     [self setupScene: view];
@@ -71,6 +79,9 @@
             break;
         case 2:
             [_ambientConditions SetFog:![_ambientConditions GetFog]];
+            break;
+        case 3:
+            
             break;
             // Undefined behavior if we don't have a tag.
     }
