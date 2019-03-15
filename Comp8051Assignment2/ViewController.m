@@ -57,13 +57,13 @@
     [button2 setEnabled:YES];
     [self.view addSubview:button2];
     
-    // Toggle Fog Button
+    // Toggle Flashlight Button
     UIButton *button3 = [UIButton buttonWithType:UIButtonTypeSystem];
-    button2.frame = CGRectMake(0, 150, 200, 10);
-    button2.tag = 3;
-    [button2 setTitle:@"Toggle Flashlight" forState:UIControlStateNormal];
-    [button2 addTarget:self action:@selector(onClick:) forControlEvents:UIControlEventTouchDown];
-    [button2 setEnabled:YES];
+    button3.frame = CGRectMake(150, 50, 200, 10);
+    button3.tag = 3;
+    [button3 setTitle:@"Toggle Flashlight" forState:UIControlStateNormal];
+    [button3 addTarget:self action:@selector(onClick:) forControlEvents:UIControlEventTouchDown];
+    [button3 setEnabled:YES];
     [self.view addSubview:button3];
     
     [EAGLContext setCurrentContext:view.context];
