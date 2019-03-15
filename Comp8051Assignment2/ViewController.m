@@ -81,7 +81,7 @@
             [_ambientConditions SetFog:![_ambientConditions GetFog]];
             break;
         case 3:
-            
+            [_ambientConditions ToggleFlashlight];
             break;
             // Undefined behavior if we don't have a tag.
     }

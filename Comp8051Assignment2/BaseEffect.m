@@ -24,6 +24,7 @@
     GLuint _spotLightDirectionUniform;
     GLuint _spotLightPositionUniform;
     GLuint _spotLightCutOffUniform;
+    GLuint _spotLightIsOnUniform;
     
     AmbientConditions *_ambientConditions;
 }
@@ -91,6 +92,7 @@
     _spotLightDirectionUniform = glGetUniformLocation(_programHandle, "u_SpotLight.direction");
     _spotLightPositionUniform = glGetUniformLocation(_programHandle, "u_SpotLight.position");
     _spotLightCutOffUniform = glGetUniformLocation(_programHandle, "u_SpotLight.cutOff");
+    _spotLightIsOnUniform = glGetUniformLocation(_programHandle, "u_SpotLight.isOn");
     
     GLint linkSuccess;
     glGetProgramiv(_programHandle, GL_LINK_STATUS, &linkSuccess);
@@ -130,6 +132,7 @@
     glUniform1f(_shininessUniform, 8.0);
     
     //spotlight
+    glUniform1i(_spotLightIsOnUniform, [_ambientConditions GetFlashlightStatus]);
     glUniform3f(_spotLightDirectionUniform, 0, 0, -1); //uses normalized vector
     glUniform3f(_spotLightPositionUniform, 0, 0, 3); //uses normalized vector
     glUniform1f(_spotLightCutOffUniform, 6.25);

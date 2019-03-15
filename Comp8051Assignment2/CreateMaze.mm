@@ -55,10 +55,6 @@
     viewMatrix = GLKMatrix4Rotate(viewMatrix, GLKMathDegreesToRadians(rotY),0,1,0);
     viewMatrix = GLKMatrix4Translate(viewMatrix, translateX, 0, translateZ);
     
-    [_shader setViewPosX:translateX];
-    [_shader setViewPosZ:translateZ];
-    [_shader setViewPosX:rotY];
-    
     for(int i = 0; i<rows; i++){
         for(int j = 0; j<cols; j++){
             [_cells[i][j] renderWithParentModelViewMatrix:viewMatrix posX:j posZ:i];

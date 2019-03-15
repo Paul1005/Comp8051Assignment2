@@ -18,6 +18,7 @@ struct SpotLight {
     lowp vec3 position;
     lowp vec3 direction;
     lowp float cutOff;
+    int isOn;
 };
 
 uniform Light u_Light;
@@ -34,14 +35,16 @@ void main(void) {
     // Ambient
     lowp vec3 AmbientColor = u_Light.Color * u_Light.AmbientIntensity;
     
-    lowp vec3 lightDir = normalize(u_SpotLight.position - frag_Position);
-    
-    // check if lighting is inside the spotlight cone
-    lowp float angle = degrees(acos(dot(lightDir, normalize(-u_SpotLight.direction))));
-    if(angle < u_SpotLight.cutOff){
-        AmbientColor += 0.5;
+    if(u_SpotLight.isOn == 1){
+        lowp vec3 lightDir = normalize(u_SpotLight.position - frag_Position);
+        
+        // check if lighting is inside the spotlight cone
+        lowp float angle = degrees(acos(dot(lightDir, normalize(-u_SpotLight.direction))));
+        if(angle < u_SpotLight.cutOff){
+            AmbientColor += 0.5;
+        }
     }
-    
+
     //Diffuse
     lowp vec3 Normal = normalize(frag_Normal); // normalize the normal b/c it might not be normal anymore after being interpelated
     lowp float DiffuseFactor = max(-dot(Normal, u_Light.Direction), 0.0);
