@@ -21,6 +21,7 @@
     GLuint _lightDirectionUniform;
     GLuint _matSpecularIntensityUniform;
     GLuint _shininessUniform;
+    GLuint _fogEnabledUniform;
     GLuint _spotLightDirectionUniform;
     GLuint _spotLightPositionUniform;
     GLuint _spotLightCutOffUniform;
@@ -89,6 +90,9 @@
     _lightDirectionUniform = glGetUniformLocation(_programHandle, "u_Light.Direction");
     _matSpecularIntensityUniform = glGetUniformLocation(_programHandle, "u_MatSpecularIntensity");
     _shininessUniform = glGetUniformLocation(_programHandle, "u_Shininess");
+    
+    _fogEnabledUniform = glGetUniformLocation(_programHandle, "u_FogEnabled");
+    
     _spotLightDirectionUniform = glGetUniformLocation(_programHandle, "u_SpotLight.direction");
     _spotLightPositionUniform = glGetUniformLocation(_programHandle, "u_SpotLight.position");
     _spotLightCutOffUniform = glGetUniformLocation(_programHandle, "u_SpotLight.cutOff");
@@ -130,6 +134,9 @@
     //specular lighting
     glUniform1f(_matSpecularIntensityUniform, 2.0);
     glUniform1f(_shininessUniform, 8.0);
+    
+    // fog
+    glUniform1f(_fogEnabledUniform, [_ambientConditions GetFog]);
     
     //spotlight
     glUniform1i(_spotLightIsOnUniform, [_ambientConditions GetFlashlightStatus]);

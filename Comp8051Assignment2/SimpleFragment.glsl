@@ -14,6 +14,8 @@ struct Light {
     lowp vec3 Direction;
 };
 
+uniform int u_FogEnabled;
+
 struct SpotLight {
     lowp vec3 position;
     lowp vec3 direction;
@@ -56,5 +58,9 @@ void main(void) {
     lowp float SpecularFactor = pow(max(0.0, -dot(Reflection, Eye)), u_Shininess);
     lowp vec3 SpecularColor = u_Light.Color * u_MatSpecularIntensity * SpecularFactor;
     
-    gl_FragColor = texture2D(u_Texture, frag_TexCoord) * vec4(mix(fogColor, (AmbientColor + DiffuseColor + SpecularColor), fogFactor),1);
+    if(u_FogEnabled == 1) {
+        gl_FragColor = texture2D(u_Texture, frag_TexCoord) * vec4(mix(fogColor, (AmbientColor + DiffuseColor + SpecularColor), fogFactor),1);
+    } else {
+        gl_FragColor = texture2D(u_Texture, frag_TexCoord) * vec4((AmbientColor + DiffuseColor + SpecularColor),1);
+    }
 }
