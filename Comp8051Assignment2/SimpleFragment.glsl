@@ -15,7 +15,14 @@ struct Light {
 };
 uniform Light u_Light;
 
+const lowp vec3 fogColor = vec3(0.5, 0.5,0.5);
+const lowp float FogDensity = 0.05;
+
 void main(void) {
+    
+    lowp float distance = length(vec4(frag_Position, 1));;
+    lowp float fogFactor = 1.0 /exp(distance * FogDensity);;
+    fogFactor = clamp( fogFactor, 0.0, 1.0 );
     
     // Ambient
     lowp vec3 AmbientColor = u_Light.Color * u_Light.AmbientIntensity;
@@ -31,5 +38,5 @@ void main(void) {
     lowp float SpecularFactor = pow(max(0.0, -dot(Reflection, Eye)), u_Shininess);
     lowp vec3 SpecularColor = u_Light.Color * u_MatSpecularIntensity * SpecularFactor;
     
-    gl_FragColor = texture2D(u_Texture, frag_TexCoord) * vec4((AmbientColor + DiffuseColor + SpecularColor),1);
+    gl_FragColor = texture2D(u_Texture, frag_TexCoord) * vec4(mix(fogColor, (AmbientColor + DiffuseColor + SpecularColor), fogFactor),1);;
 }
