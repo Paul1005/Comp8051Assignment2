@@ -45,12 +45,6 @@
     UITapGestureRecognizer * doubleTapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(doubleTap:)];
     doubleTapRecognizer.numberOfTapsRequired = 2;
     [view addGestureRecognizer:doubleTapRecognizer];
-    
-    UIPanGestureRecognizer * panRecognizer = [[UIPanGestureRecognizer alloc] initWithTarget:self
-                                                                                     action:@selector(twoFingerPan:)];
-    panRecognizer.minimumNumberOfTouches = 2;
-    panRecognizer.maximumNumberOfTouches = 2;
-    [view addGestureRecognizer:panRecognizer];
 }
 
 - (void) draw{
@@ -100,13 +94,6 @@
     rotY = 180;
     translateX = 0;
     translateZ = 3;
-}
-
-- (void)twoFingerPan:(UIPanGestureRecognizer *)pan {
-    CGPoint touchLocation = [pan locationInView:currentView];
-    translateX += -sinf(GLKMathDegreesToRadians(rotY))*touchLocation.y/1000;
-    translateZ += cosf(GLKMathDegreesToRadians(rotY))*touchLocation.y/1000;
-    NSLog(@"%f", translateX);
 }
 
 @end
