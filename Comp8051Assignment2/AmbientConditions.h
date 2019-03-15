@@ -30,6 +30,9 @@ typedef NS_OPTIONS(NSInteger, Conditions) {
 -(GLfloat)GetAmbient;
 -(GLfloat)GetDiffuse;
 
+-(void)SetFog:(Boolean) fog;
+-(Boolean)GetFog;
+
 @end
 
 
