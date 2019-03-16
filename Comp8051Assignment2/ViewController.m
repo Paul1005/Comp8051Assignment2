@@ -19,6 +19,8 @@
     
     BaseEffect *_shader;
     CreateMaze *_maze;
+    Console *_console;
+    BaseEffect *_consoleShader;
 }
 
 - (void) setupScene: (GLKView *) view{
@@ -28,6 +30,9 @@
     _maze = [[CreateMaze alloc] init];
     [_maze setupMaze:5 cols: 5 shader: _shader view: view];
     //[_maze setupMaze:1 cols: 1 shader: _shader view: view]; // This is a workaround for Jason, as I'm unable to run the app using a 5x5 maze, it simply refuses to load on the provided iPod Touch, and my Simulator runs far too slowly to test anything.
+    
+    _console = [[Console alloc] init];
+    [_console setupConsole:_consoleShader view: view];
     
     _shader.projectionMatrix = GLKMatrix4MakePerspective(GLKMathDegreesToRadians(85.0), self.view.bounds.size.width / self.view.bounds.size.height, 1, 150); //fov, aspect ratio, near plane, far plane
 }
@@ -99,6 +104,7 @@
     glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA); // blends different textures, also deals with transparency
 
     [_maze draw];
+    [_console draw];
 }
 
 -(void)update {
