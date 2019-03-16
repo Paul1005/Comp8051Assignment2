@@ -30,6 +30,14 @@ const static GLubyte indices[]={
     }
     return self;
 }
+
+-(instancetype)initWithShader:(BaseEffect*)shader andTexture:(NSString *)texture{
+    if ((self = [super initWithName:"plane" shader:shader vertices:(Vertex*)vertices vertexCount:sizeof(vertices)/sizeof(vertices[0]) indices:(GLubyte*)indices indexCount:sizeof(indices)/sizeof(indices[0])])) {
+        [self loadTexture:texture];
+        
+    }
+    return self;
+}
 - (void)updateWithDelta:(NSTimeInterval)dt{
 //empty as planes shouldn't do anything other than sit
 }

@@ -11,5 +11,5 @@
 @interface Plane : Model
 
 - (instancetype)initWithShader:(BaseEffect*)shader;
-
+- (instancetype)initWithShader:(BaseEffect*)shader andTexture:(NSString *)texture;
 @end
