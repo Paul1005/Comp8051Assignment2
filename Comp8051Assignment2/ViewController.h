@@ -7,9 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <GLKit/GLKit.h>
+#import "AmbientConditions.h"
+#import "CreateMaze.h"
+#import "Console.h"
 
-@interface ViewController : UIViewController
-
+@interface ViewController : GLKViewController
 
 @end
 
