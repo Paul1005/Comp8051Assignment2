@@ -57,6 +57,14 @@
     [button2 setEnabled:YES];
     [self.view addSubview:button2];
     
+    // Toggle Flashlight Button
+    UIButton *button3 = [UIButton buttonWithType:UIButtonTypeSystem];
+    button3.frame = CGRectMake(150, 50, 200, 10);
+    button3.tag = 3;
+    [button3 setTitle:@"Toggle Flashlight" forState:UIControlStateNormal];
+    [button3 addTarget:self action:@selector(onClick:) forControlEvents:UIControlEventTouchDown];
+    [button3 setEnabled:YES];
+    [self.view addSubview:button3];
     
     [EAGLContext setCurrentContext:view.context];
     [self setupScene: view];
@@ -72,6 +80,9 @@
         case 2:
             [_ambientConditions SetFog:![_ambientConditions GetFog]];
             break;
+        case 3:
+            [_ambientConditions ToggleFlashlight];
+            break;
             // Undefined behavior if we don't have a tag.
     }
 
@@ -84,6 +95,7 @@
     glEnable(GL_DEPTH_TEST);// takes care of objects drawn on top of other objects
     glEnable(GL_CULL_FACE); //takes care of the own object
     glEnable(GL_BLEND); // enables blending
+    //glEnable(GL_FOG);
     glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA); // blends different textures, also deals with transparency
 
     [_maze draw];

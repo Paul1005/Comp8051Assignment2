@@ -13,13 +13,23 @@ struct Light {
     lowp float DiffuseIntensity;
     lowp vec3 Direction;
 };
+
+uniform int u_FogEnabled;
+
+struct SpotLight {
+    lowp vec3 position;
+    lowp vec3 direction;
+    lowp float cutOff;
+    int isOn;
+};
+
 uniform Light u_Light;
+uniform SpotLight u_SpotLight;
 
 const lowp vec3 fogColor = vec3(0.5, 0.5,0.5);
 const lowp float FogDensity = 0.05;
 
 void main(void) {
-    
     lowp float distance = length(vec4(frag_Position, 1));;
     lowp float fogFactor = 1.0 /exp(distance * FogDensity);;
     fogFactor = clamp( fogFactor, 0.0, 1.0 );
@@ -27,6 +37,16 @@ void main(void) {
     // Ambient
     lowp vec3 AmbientColor = u_Light.Color * u_Light.AmbientIntensity;
     
+    if(u_SpotLight.isOn == 1){
+        lowp vec3 lightDir = normalize(u_SpotLight.position - frag_Position);
+        
+        // check if lighting is inside the spotlight cone
+        lowp float angle = degrees(acos(dot(lightDir, normalize(-u_SpotLight.direction))));
+        if(angle < u_SpotLight.cutOff){
+            AmbientColor += 0.5;
+        }
+    }
+
     //Diffuse
     lowp vec3 Normal = normalize(frag_Normal); // normalize the normal b/c it might not be normal anymore after being interpelated
     lowp float DiffuseFactor = max(-dot(Normal, u_Light.Direction), 0.0);
@@ -38,5 +58,9 @@ void main(void) {
     lowp float SpecularFactor = pow(max(0.0, -dot(Reflection, Eye)), u_Shininess);
     lowp vec3 SpecularColor = u_Light.Color * u_MatSpecularIntensity * SpecularFactor;
     
-    gl_FragColor = texture2D(u_Texture, frag_TexCoord) * vec4(mix(fogColor, (AmbientColor + DiffuseColor + SpecularColor), fogFactor),1);;
+    if(u_FogEnabled == 1) {
+        gl_FragColor = texture2D(u_Texture, frag_TexCoord) * vec4(mix(fogColor, (AmbientColor + DiffuseColor + SpecularColor), fogFactor),1);
+    } else {
+        gl_FragColor = texture2D(u_Texture, frag_TexCoord) * vec4((AmbientColor + DiffuseColor + SpecularColor),1);
+    }
 }

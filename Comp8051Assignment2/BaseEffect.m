@@ -21,6 +21,11 @@
     GLuint _lightDirectionUniform;
     GLuint _matSpecularIntensityUniform;
     GLuint _shininessUniform;
+    GLuint _fogEnabledUniform;
+    GLuint _spotLightDirectionUniform;
+    GLuint _spotLightPositionUniform;
+    GLuint _spotLightCutOffUniform;
+    GLuint _spotLightIsOnUniform;
     
     AmbientConditions *_ambientConditions;
 }
@@ -37,7 +42,7 @@
     GLuint shaderHandle = glCreateShader(shaderType);
     
     const char * shaderStringUTF8 = [shaderString UTF8String];
-    int shaderStringLength = [shaderString length];
+    int shaderStringLength = (int)[shaderString length];
     glShaderSource(shaderHandle, 1, &shaderStringUTF8, &shaderStringLength);
     
     glCompileShader(shaderHandle);
@@ -86,6 +91,13 @@
     _matSpecularIntensityUniform = glGetUniformLocation(_programHandle, "u_MatSpecularIntensity");
     _shininessUniform = glGetUniformLocation(_programHandle, "u_Shininess");
     
+    _fogEnabledUniform = glGetUniformLocation(_programHandle, "u_FogEnabled");
+    
+    _spotLightDirectionUniform = glGetUniformLocation(_programHandle, "u_SpotLight.direction");
+    _spotLightPositionUniform = glGetUniformLocation(_programHandle, "u_SpotLight.position");
+    _spotLightCutOffUniform = glGetUniformLocation(_programHandle, "u_SpotLight.cutOff");
+    _spotLightIsOnUniform = glGetUniformLocation(_programHandle, "u_SpotLight.isOn");
+    
     GLint linkSuccess;
     glGetProgramiv(_programHandle, GL_LINK_STATUS, &linkSuccess);
     if (linkSuccess == GL_FALSE) {
@@ -122,6 +134,18 @@
     //specular lighting
     glUniform1f(_matSpecularIntensityUniform, 2.0);
     glUniform1f(_shininessUniform, 8.0);
+    
+    // fog
+    glUniform1f(_fogEnabledUniform, [_ambientConditions GetFog]);
+    
+    //spotlight
+    glUniform1i(_spotLightIsOnUniform, [_ambientConditions GetFlashlightStatus]);
+    glUniform3f(_spotLightDirectionUniform, 0, 0, -1); //uses normalized vector
+    glUniform3f(_spotLightPositionUniform, 0, 0, 3); //uses normalized vector
+    glUniform1f(_spotLightCutOffUniform, 6.25);
+    
+    /*lowp vec3 lightDir = normalize(u_SpotLight.position - frag_Position);
+    float theta = GLKVector3DotProduct(lightDir, normalize(-u_SpotLight.direction));*/
 }
 
 - (instancetype)initWithVertexShader:(NSString *)vertexShader fragmentShader:
