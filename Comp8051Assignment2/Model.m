@@ -81,7 +81,11 @@
 
 - (void)renderWithParentModelViewMatrix:(GLKMatrix4)parentModelViewMatrix{
     GLKMatrix4 modelViewMatrix = GLKMatrix4Multiply(parentModelViewMatrix, [self modelMatrix]);
-    
+    [self render:modelViewMatrix];
+}
+
+- (void)render:(GLKMatrix4)modelViewMatrix{
+   
     _shader.modelViewMatrix = modelViewMatrix;
     _shader.texture = self.texture;
     [_shader prepareToDraw];

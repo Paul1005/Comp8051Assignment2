@@ -104,6 +104,7 @@
     glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA); // blends different textures, also deals with transparency
 
     [_maze draw];
+    [_console draw];
 }
 
 -(void)update {

@@ -26,6 +26,7 @@
 
 - (instancetype)initWithName:(char*)name shader:(BaseEffect*)shader vertices: (Vertex*)vertices vertexCount:(unsigned int)vertexCount indices:(GLubyte*)indices indexCount:(unsigned int)indexCount;
 - (void)renderWithParentModelViewMatrix:(GLKMatrix4)parentModelViewMatrix;
+- (void)render:(GLKMatrix4)modelViewMatrix;
 - (void)updateWithDelta:(NSTimeInterval)dt;
 - (void)loadTexture:(NSString *)filename;
 

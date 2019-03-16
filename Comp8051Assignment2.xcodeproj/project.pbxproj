@@ -33,6 +33,8 @@
 		DA9956FC2213809C002315D0 /* maze.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DA9956FA2213809C002315D0 /* maze.cpp */; };
 		E3591BFF2238031400D7FD5E /* AmbientConditions.m in Sources */ = {isa = PBXBuildFile; fileRef = E3591BFE2238031400D7FD5E /* AmbientConditions.m */; };
 		E374B2CD223C8B6E00F83100 /* Console.m in Sources */ = {isa = PBXBuildFile; fileRef = E374B2CC223C8B6E00F83100 /* Console.m */; };
+		E374B2CF223CB69E00F83100 /* UIVertex.glsl in Sources */ = {isa = PBXBuildFile; fileRef = E374B2CE223CB69E00F83100 /* UIVertex.glsl */; };
+		E374B2D1223CB6C700F83100 /* UIFragment.glsl in Sources */ = {isa = PBXBuildFile; fileRef = E374B2D0223CB6C700F83100 /* UIFragment.glsl */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -98,6 +100,8 @@
 		E3591BFE2238031400D7FD5E /* AmbientConditions.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AmbientConditions.m; sourceTree = "<group>"; };
 		E374B2CB223C8B4D00F83100 /* Console.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Console.h; sourceTree = "<group>"; };
 		E374B2CC223C8B6E00F83100 /* Console.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Console.m; sourceTree = "<group>"; };
+		E374B2CE223CB69E00F83100 /* UIVertex.glsl */ = {isa = PBXFileReference; lastKnownFileType = text; path = UIVertex.glsl; sourceTree = "<group>"; };
+		E374B2D0223CB6C700F83100 /* UIFragment.glsl */ = {isa = PBXFileReference; lastKnownFileType = text; path = UIFragment.glsl; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -133,6 +137,8 @@
 				DA386D0D2235012C002EB622 /* SimpleFragment.glsl */,
 				DA386D0C2235012C002EB622 /* SimpleVertex.glsl */,
 				DA386D0E2235012D002EB622 /* Vertex.h */,
+				E374B2CE223CB69E00F83100 /* UIVertex.glsl */,
+				E374B2D0223CB6C700F83100 /* UIFragment.glsl */,
 			);
 			name = Shaders;
 			sourceTree = "<group>";
@@ -367,6 +373,8 @@
 				DA9956FC2213809C002315D0 /* maze.cpp in Sources */,
 				DA386D04223500F6002EB622 /* Cube.m in Sources */,
 				DA9956C722138063002315D0 /* AppDelegate.m in Sources */,
+				E374B2CF223CB69E00F83100 /* UIVertex.glsl in Sources */,
+				E374B2D1223CB6C700F83100 /* UIFragment.glsl in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
