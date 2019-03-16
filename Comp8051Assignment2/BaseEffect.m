@@ -136,7 +136,7 @@
     glUniform1f(_shininessUniform, 8.0);
     
     // fog
-    glUniform1f(_fogEnabledUniform, [_ambientConditions GetFog]);
+    glUniform1i(_fogEnabledUniform, [_ambientConditions GetFog] ? 1 : 0);
     
     //spotlight
     glUniform1i(_spotLightIsOnUniform, [_ambientConditions GetFlashlightStatus]);
