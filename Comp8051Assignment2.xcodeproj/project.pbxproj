@@ -32,6 +32,7 @@
 		DA9956FB2213809C002315D0 /* DisjointSet.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DA9956F72213809C002315D0 /* DisjointSet.cpp */; };
 		DA9956FC2213809C002315D0 /* maze.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DA9956FA2213809C002315D0 /* maze.cpp */; };
 		E3591BFF2238031400D7FD5E /* AmbientConditions.m in Sources */ = {isa = PBXBuildFile; fileRef = E3591BFE2238031400D7FD5E /* AmbientConditions.m */; };
+		E374B2CD223C8B6E00F83100 /* Console.m in Sources */ = {isa = PBXBuildFile; fileRef = E374B2CC223C8B6E00F83100 /* Console.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -95,6 +96,8 @@
 		DA9956FA2213809C002315D0 /* maze.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = maze.cpp; sourceTree = "<group>"; };
 		E3591BFD223802EE00D7FD5E /* AmbientConditions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AmbientConditions.h; sourceTree = "<group>"; };
 		E3591BFE2238031400D7FD5E /* AmbientConditions.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AmbientConditions.m; sourceTree = "<group>"; };
+		E374B2CB223C8B4D00F83100 /* Console.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Console.h; sourceTree = "<group>"; };
+		E374B2CC223C8B6E00F83100 /* Console.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Console.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -189,6 +192,8 @@
 				DA386D1C22363D70002EB622 /* CreateMaze.mm */,
 				DA386D26223880DE002EB622 /* Cell.h */,
 				DA386D27223880DE002EB622 /* Cell.m */,
+				E374B2CB223C8B4D00F83100 /* Console.h */,
+				E374B2CC223C8B6E00F83100 /* Console.m */,
 			);
 			path = Comp8051Assignment2;
 			sourceTree = "<group>";
@@ -349,6 +354,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E374B2CD223C8B6E00F83100 /* Console.m in Sources */,
 				DA9956FB2213809C002315D0 /* DisjointSet.cpp in Sources */,
 				DA386D0F2235012D002EB622 /* BaseEffect.m in Sources */,
 				DA386D14223502A9002EB622 /* Plane.m in Sources */,

@@ -10,6 +10,7 @@
 #import <GLKit/GLKit.h>
 #import "AmbientConditions.h"
 #import "CreateMaze.h"
+#import "Console.h"
 
 @interface ViewController : GLKViewController
 
