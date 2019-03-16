@@ -26,13 +26,14 @@ struct SpotLight {
 uniform Light u_Light;
 uniform SpotLight u_SpotLight;
 
-const lowp vec3 fogColor = vec3(0.5, 0.5,0.5);
-const lowp float FogDensity = 0.05;
+const lowp vec3 fogColor = vec3(0.5, 0.5, 0.5);
+const lowp float FogDensity = 0.75;
 
 void main(void) {
-    lowp float distance = length(vec4(frag_Position, 1));;
+    lowp float distance = length(frag_Position);
     lowp float fogFactor = 1.0 /exp(distance * FogDensity);;
     fogFactor = clamp( fogFactor, 0.0, 1.0 );
+    lowp float nonFogFactor = 1.0 - fogFactor;
     
     // Ambient
     lowp vec3 AmbientColor = u_Light.Color * u_Light.AmbientIntensity;
@@ -59,8 +60,10 @@ void main(void) {
     lowp vec3 SpecularColor = u_Light.Color * u_MatSpecularIntensity * SpecularFactor;
     
     if(u_FogEnabled == 1) {
-        gl_FragColor = texture2D(u_Texture, frag_TexCoord) * vec4(mix(fogColor, (AmbientColor + DiffuseColor + SpecularColor), fogFactor),1);
+        gl_FragColor = texture2D(u_Texture, frag_TexCoord) * vec4(fogFactor * (AmbientColor + DiffuseColor + SpecularColor), 1) + vec4(nonFogFactor * fogColor, 1);
     } else {
         gl_FragColor = texture2D(u_Texture, frag_TexCoord) * vec4((AmbientColor + DiffuseColor + SpecularColor),1);
     }
+    
+
 }
